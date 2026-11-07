@@ -1,146 +1,159 @@
-import os
+"""Integrate the fictional 40-student degree into a 5.2 timetable.
+
+Run from anywhere:
+    python solucions_5_4.py [proposal.csv] [--out proposal-grau-nou.csv]
+
+If no proposal is supplied, the script uses paquet/proposta_partida.csv.
+The real 5.2 output can be passed as the first argument.
+"""
+from __future__ import annotations
+
+import argparse
+from collections import defaultdict
+from pathlib import Path
+
 import pandas as pd
 
-# 1. Trobar la carpeta de treball automàticament
-DIR_BASE = os.path.dirname(os.path.abspath(__file__))
+
+def locate_package(start: Path) -> Path:
+    """Find paquet/ beside this script or in an ancestor project folder."""
+    for base in (start, *start.parents):
+        candidate = base / "paquet"
+        if (candidate / "sessions.csv").is_file():
+            return candidate
+    raise FileNotFoundError(
+        "No s'ha trobat paquet/sessions.csv. Desa el script dins del projecte "
+        "del repte o passa --paquet amb la ruta de paquet."
+    )
 
 
-def carregar_csv(nom_fitxer):
-    rutes = [
-        os.path.join(DIR_BASE, nom_fitxer),
-        os.path.join(DIR_BASE, 'paquet', nom_fitxer),
-        os.path.join(os.path.dirname(DIR_BASE), nom_fitxer),
-        os.path.join(
-            DIR_BASE, 'paquet', 'escenaris', 'grau-nou-40', nom_fitxer
-        ),
-        os.path.join(DIR_BASE, 'escenaris', 'grau-nou-40', nom_fitxer),
-    ]
-    for r in rutes:
-        if os.path.exists(r):
-            return pd.read_csv(r)
-    raise FileNotFoundError(f"No s'ha trobat el fitxer {nom_fitxer}")
+def overlaps(a_start: int, a_end: int, b_start: int, b_end: int) -> bool:
+    return a_start < b_end and b_start < a_end
 
 
-# 2. Carregar la proposta del 5.2, les sessions originals i les aules
-proposta_52 = carregar_csv('proposta-torns.csv')
-sessions = carregar_csv('sessions.csv')
-aules = carregar_csv('aules.csv')
+def minutes(value: str) -> int:
+    hour, minute = map(int, value.split(":"))
+    return hour * 60 + minute
 
-# Filtrem les aules ordinàries d'aula docent o seminari
-aules_ord = aules[
-    aules['tipus'].isin(['Aules docents', 'Seminaris'])
-].sort_values(by='capacitat', ascending=True)
 
-# 3. Carregar o generar les 235 sessions del Grau Nou (estructura de 1r de Dades GED:1r al 2n semestre)
-ruta_grau_nou = os.path.join(
-    DIR_BASE, 'paquet', 'escenaris', 'grau-nou-40', 'sessions.csv'
-)
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("proposal", nargs="?", help="Proposta 5.2 en CSV")
+    parser.add_argument("--paquet", type=Path, help="Carpeta paquet")
+    parser.add_argument("--out", default="proposta-grau-nou.csv")
+    args = parser.parse_args()
 
-if os.path.exists(ruta_grau_nou):
-    sessions_gn = pd.read_csv(ruta_grau_nou)
-    sem2_gn = sessions_gn[sessions_gn['semestre'] == 'C/2'].copy()
-else:
-    # Si s'executa des del paquet base, extreure les 235 sessions d'estructura GED:1r del 2n semestre
-    sem2_gn = sessions[
-        (sessions['titulacions_curs'] == 'GED:1r')
-        & (sessions['semestre'] == 'C/2')
-    ].copy()
-    sem2_gn['titulacions_curs'] = 'GN:1r'
-    sem2_gn['id_sessio'] = sem2_gn['id_sessio'].apply(lambda x: f'GN_{x}')
-    sem2_gn['alumnes'] = 40
+    package = args.paquet.resolve() if args.paquet else locate_package(Path(__file__).resolve().parent)
+    proposal_path = Path(args.proposal).resolve() if args.proposal else package / "proposta_partida.csv"
+    sessions = pd.read_csv(package / "sessions.csv", keep_default_na=False, dtype=str)
+    new_path = package / "escenaris" / "grau-nou-40" / "sessions_extra.csv"
+    new = pd.read_csv(new_path, keep_default_na=False, dtype=str)
+    rooms = pd.read_csv(package / "aules.csv", keep_default_na=False)
+    proposal = pd.read_csv(proposal_path, keep_default_na=False, dtype=str)
 
-# 4. Registrar l'ocupació actual de les aules a la proposta del 5.2
-ocupacio = set()
-for _, row in proposta_52.iterrows():
-    if pd.notna(row['aula']):
-        ocupacio.add((row['aula'], row['dia'], row['h_ini']))
+    required = {"id_sessio", "dia", "h_ini", "aula"}
+    if not required.issubset(proposal.columns):
+        raise ValueError(f"La proposta necessita les columnes: {', '.join(sorted(required))}")
+    if proposal["id_sessio"].duplicated().any():
+        raise ValueError("La proposta té id_sessio duplicats.")
 
-# 5. Assignar aules ordinàries a les 235 sessions del Grau Nou
-noves_assignacions_gn = {}
-aula_base_grup_gn = {}
+    new = new[new["semestre"] == "C/2"].copy()
+    if len(new) != 235:
+        raise ValueError(f"S'esperaven 235 sessions C/2; se n'han trobat {len(new)}.")
+    if set(new.id_sessio) & set(proposal.id_sessio):
+        raise ValueError("La proposta ja conté identificadors del grau nou.")
 
-# Agrupar per activitats setmanals del Grau Nou
-activitats_gn = sem2_gn.drop_duplicates(subset=['activitat_id']).sort_values(
-    by='alumnes', ascending=False
-)
-
-for _, row in activitats_gn.iterrows():
-    act_id = row['activitat_id']
-    grup = row['grup']
-    dia = row['dia']
-    h_ini = row['h_ini']
-    alumnes = 40  # El grau nou té 40 places
-
-    aula_triada = None
-
-    # Intent A: Reutilitzar l'aula base del grup
-    if grup in aula_base_grup_gn:
-        cand = aula_base_grup_gn[grup]
-        match = aules_ord[aules_ord['aula'] == cand]
-        if not match.empty and match['capacitat'].values[0] >= alumnes:
-            if (cand, dia, h_ini) not in ocupacio:
-                aula_triada = cand
-
-    # Intent B: Buscar l'aula lliure més petita de capacitat >= 40
-    if not aula_triada:
-        for _, a_row in aules_ord.iterrows():
-            cand = a_row['aula']
-            if (
-                a_row['capacitat'] >= alumnes
-                and (cand, dia, h_ini) not in ocupacio
-            ):
-                aula_triada = cand
-                break
-
-    if aula_triada:
-        ocupacio.add((aula_triada, dia, h_ini))
-        aula_base_grup_gn[grup] = aula_triada
-
-    for s_id in sem2_gn[sem2_gn['activitat_id'] == act_id]['id_sessio']:
-        noves_assignacions_gn[s_id] = (
-            aula_triada if aula_triada else 'SENSE_AULA'
-        )
-
-# 6. Combinar la proposta del 5.2 amb les sessions del Grau Nou
-df_gn_proposta = pd.DataFrame(
-    [
-        {
-            'id_sessio': row['id_sessio'],
-            'dia': row['dia'],
-            'h_ini': row['h_ini'],
-            'h_fi': row['h_fi'],
-            'aula': noves_assignacions_gn.get(row['id_sessio'], ''),
+    # Metadata is used for fixed-session dates/durations and the full room occupancy.
+    metadata = pd.concat([sessions, new], ignore_index=True).set_index("id_sessio")
+    records = {}
+    for sid, row in proposal.set_index("id_sessio").iterrows():
+        if sid not in metadata.index:
+            continue
+        meta = metadata.loc[sid]
+        if isinstance(meta, pd.DataFrame):
+            meta = meta.iloc[0]
+        day = row["dia"] or meta["dia"]
+        start = row["h_ini"] or meta["h_ini"]
+        end = minutes(start) + int(meta["durada_min"])
+        records[sid] = {
+            "date": meta["data"], "day": day, "start": minutes(start),
+            "end": end, "room": row["aula"].strip(),
         }
-        for _, row in sem2_gn.iterrows()
-    ]
-)
 
-proposta_54 = pd.concat([proposta_52, df_gn_proposta], ignore_index=True)
+    room_rows = rooms.set_index("aula").to_dict("index")
+    by_date_room = defaultdict(list)
+    for sid, r in records.items():
+        if r["room"]:
+            by_date_room[(r["date"], r["room"])].append((r["start"], r["end"], sid))
 
-# Save output CSV file required for Step 5.4
-proposta_54.to_csv('proposta-grau-nou.csv', index=False)
-
-# 7. Demostració analítica i informe de capacitat
-assignades_ok = sum(
-    1 for v in noves_assignacions_gn.values() if v != 'SENSE_AULA'
-)
-
-print('=== PAS 5.4 COMPLETAT ===')
-print(f'Sessions del Grau Nou a integrar: {len(sem2_gn)}')
-print(f'Sessions del Grau Nou assignades amb èxit: {assignades_ok}')
-
-if assignades_ok < len(sem2_gn):
-    print(
-        '\n[DEMOSTRACIÓ ANALÍTICA DE CUELL DE BOTELLA]: El Grau Nou NO hi'
-        ' cap de manera estricta al matí sense moure l\'horari de partida.'
+    # Group by activity so every weekly meeting of the same group uses one room.
+    grouped = list(new.groupby("activitat_id", sort=False))
+    grouped.sort(key=lambda item: (-int(item[1]["alumnes"].astype(int).max()), item[0]))
+    ordinary = rooms[rooms["ordinaria"].astype(str).eq("1")].sort_values(
+        ["capacitat", "aula"], kind="stable"
     )
-    print(
-        'Motiu: En les franges punta del matí (Dilluns i Dimecres a les 10:30'
-        ' h), les 19 aules ordinàries disponibles ja estan ocupades al 100%'
-        ' per les sessions de 1r i 2n del model 5.2.'
-    )
-else:
-    print(
-        '\nRESULTAT: S\'han integrat les 235 sessions del Grau Nou a'
-        ' "proposta-grau-nou.csv".'
-    )
+    room_capacity = dict(zip(rooms.aula, rooms.capacitat.astype(int)))
+    assigned = {}
+    room_for_activity = {}
+    impossible = []
+
+    for activity, rows in grouped:
+        candidates = []
+        group = rows.iloc[0]["grup"]
+        size = int(rows["alumnes"].astype(int).max())
+        # Reuse a room already selected for the same fictitious group when feasible.
+        preferred = room_for_activity.get(group)
+        if preferred:
+            candidates.append(preferred)
+        candidates.extend(r for r in ordinary["aula"] if r not in candidates)
+        selected = None
+        for room in candidates:
+            if room_capacity[room] < size:
+                continue
+            conflict = False
+            for _, s in rows.iterrows():
+                duration = int(s["durada_min"])
+                start, end = minutes(s["h_ini"]), minutes(s["h_ini"]) + duration
+                for old_start, old_end, _ in by_date_room[(s["data"], room)]:
+                    if overlaps(start, end, old_start, old_end):
+                        conflict = True
+                        break
+                if conflict:
+                    break
+            if not conflict:
+                selected = room
+                break
+        if selected is None:
+            impossible.append((activity, group, size, len(rows)))
+            selected = "SENSE_AULA"
+        else:
+            room_for_activity[group] = selected
+            for _, s in rows.iterrows():
+                start = minutes(s["h_ini"])
+                by_date_room[(s["data"], selected)].append(
+                    (start, start + int(s["durada_min"]), s["id_sessio"])
+                )
+        for sid in rows["id_sessio"]:
+            assigned[sid] = selected
+
+    additions = pd.DataFrame([
+        {"id_sessio": row.id_sessio, "dia": row.dia, "h_ini": row.h_ini,
+         "aula": assigned[row.id_sessio]}
+        for row in new.itertuples(index=False)
+    ], columns=proposal.columns)
+    result = pd.concat([proposal, additions], ignore_index=True)
+    output = Path(args.out).resolve()
+    result.to_csv(output, index=False)
+
+    print(f"Sessions del grau nou (C/2): {len(new)}")
+    print(f"Sessions amb aula assignada: {sum(v != 'SENSE_AULA' for v in assigned.values())}")
+    print(f"Activitats sense aula: {len(impossible)}")
+    print(f"Proposta escrita a: {output}")
+    if impossible:
+        print("Activitats sense espai (activitat, grup, aforament, sessions):")
+        for item in impossible:
+            print("  ", *item)
+
+
+if __name__ == "__main__":
+    main()
