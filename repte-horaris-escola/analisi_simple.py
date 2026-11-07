@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 1. Carregar les dades de les sessions
-sessions = pd.read_csv('sessions.csv')
+sessions = pd.read_csv('paquet/sessions.csv')
 
 # 2. Filtrar només el 2n semestre (C/2)
 sem2 = sessions[sessions['semestre'] == 'C/2']
