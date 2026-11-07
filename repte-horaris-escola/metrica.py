@@ -56,7 +56,7 @@ cols_solapamiento = [
 
 # Exportar a CSV
 df_solapamientos[cols_solapamiento].to_csv('solapamientos_aulas.csv', index=False)
-print(f"✅ 'solapamientos_aulas.csv' generado con {len(df_solapamientos)} filas en conflicto.")
+print(f"'solapamientos_aulas.csv' generado con {len(df_solapamientos)} filas en conflicto.")
 
 # ==============================================================================
 # APARTADO D: IMPACTO DEL CAMBIO DE TURNO POR TITULACIÓN Y CURSO
@@ -96,4 +96,4 @@ cols_desviadas = [
 
 # Exportar a CSV
 df_desviadas[cols_desviadas].to_csv('sesiones_desviadas.csv', index=False)
-print(f"✅ 'sesiones_desviadas.csv' generado con {len(df_desviadas)} actividades fuera de turno.")
+print(f"'sesiones_desviadas.csv' generado con {len(df_desviadas)} actividades fuera de turno.")
