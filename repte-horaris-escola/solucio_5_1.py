@@ -210,6 +210,65 @@ def construir_esdeveniments(sessions: pd.DataFrame, aules: pd.DataFrame) -> tupl
     return movibles, fixats
 
 
+def reparar_solapaments(movibles, fixats, assignacions, ordinaries):
+    """Elimina cualquier R4-AULA residual antes de exportar el CSV."""
+    tots = movibles + fixats
+    fixes = {e.clau for e in fixats}
+    limit_ordinaries = len(ordinaries) - RESERVA_MINIMA
+
+    def aula(e):
+        return e.candidates[0] if e.clau in fixes else assignacions[e.clau]
+
+    def lliure(e, candidata):
+        for altre in tots:
+            if altre.clau != e.clau and altre.data == e.data and aula(altre) == candidata and solapa(e.ini, e.fi, altre.ini, altre.fi):
+                return False
+        if candidata in ordinaries:
+            for franja in FRANGES:
+                if toca_franja(e.ini, e.fi, franja):
+                    ocupades = {aula(x) for x in tots if x.clau != e.clau and x.data == e.data and aula(x) in ordinaries and toca_franja(x.ini, x.fi, franja)}
+                    if candidata not in ocupades and len(ocupades) >= limit_ordinaries:
+                        return False
+        return True
+
+    def conflictes():
+        per_aula = defaultdict(list)
+        for e in tots:
+            per_aula[(e.data, aula(e))].append(e)
+        resultat = []
+        for es in per_aula.values():
+            es.sort(key=lambda e: e.ini)
+            for i, a in enumerate(es):
+                for b in es[i + 1:]:
+                    if b.ini >= a.fi:
+                        break
+                    if solapa(a.ini, a.fi, b.ini, b.fi):
+                        resultat.append((a, b))
+        return resultat
+
+    for _ in range(500):
+        pendents = conflictes()
+        if not pendents:
+            return
+        canviat = False
+        for a, b in pendents:
+            for e in (b, a):
+                if e.clau in fixes:
+                    continue
+                candidats = [r for r in e.candidates if lliure(e, r)]
+                if candidats:
+                    candidats.sort(key=lambda r: sum(1 for x in tots if x.clau != e.clau and x.data == e.data and aula(x) == r))
+                    assignacions[e.clau] = candidats[0]
+                    canviat = True
+                    break
+            if canviat:
+                break
+        if not canviat:
+            a, b = pendents[0]
+            raise RuntimeError(f"No es pot reparar R4-AULA: {a.files[0].id_sessio} / {b.files[0].id_sessio}")
+    raise RuntimeError("S'ha superat el límit de reparació de R4-AULA")
+
+
 def main() -> None:
     sessions = pd.read_csv(PAQUET / "sessions.csv").fillna("")
     aules = pd.read_csv(PAQUET / "aules.csv").fillna("")
@@ -233,6 +292,8 @@ def main() -> None:
             ids = ", ".join(e.files[0].id_sessio for e in no_col_locats[:8])
             raise RuntimeError(f"No s'han pogut assignar {len(no_col_locats)} sessions del {data}: {ids}")
         assignacions.update(p.aula_de)
+
+    reparar_solapaments(movibles, fixats, assignacions, ordinaries)
 
     # Propaga una única aula a totes les files d'una sessió compartida.
     per_id: dict[str, str] = {}
