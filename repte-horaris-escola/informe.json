@@ -1,11 +1,17 @@
 {
   "veredicte": "NO VALIDA",
   "restriccions": {
+    "R1-FIXADA": {
+      "total": 8,
+      "compten": 8,
+      "declarades": 0,
+      "heretades": 0
+    },
     "R1-TORN": {
       "total": 3246,
-      "compten": 2008,
+      "compten": 2170,
       "declarades": 0,
-      "heretades": 1238
+      "heretades": 1076
     },
     "R2-FINESTRA": {
       "total": 13,
@@ -15,9 +21,15 @@
     },
     "R3-AFORAMENT": {
       "total": 101,
-      "compten": 43,
+      "compten": 44,
       "declarades": 0,
-      "heretades": 58
+      "heretades": 57
+    },
+    "R3-TANCADA": {
+      "total": 2,
+      "compten": 2,
+      "declarades": 0,
+      "heretades": 0
     },
     "R3-TIPUS": {
       "total": 54,
@@ -30,6 +42,12 @@
       "compten": 0,
       "declarades": 0,
       "heretades": 322
+    },
+    "R4-AULA": {
+      "total": 87,
+      "compten": 87,
+      "declarades": 0,
+      "heretades": 0
     },
     "R4-DOCENT": {
       "total": 752,
@@ -44,8 +62,8 @@
       "heretades": 195
     },
     "R5-SENSE-AULA": {
-      "total": 4541,
-      "compten": 4541,
+      "total": 3405,
+      "compten": 3405,
       "declarades": 0,
       "heretades": 0
     }
@@ -54,24 +72,26 @@
     "ESPAI-DOBLE": 415
   },
   "objectius": {
-    "hores_mortes_min": 72930,
-    "desplacaments_aula": 544,
-    "desplacaments_edifici": 0,
-    "canvis_franja": 0,
-    "canvis_aula": 0,
-    "r6_aules_te_extra_per_grup": 14,
-    "r6_canvis_te_paul_fora_passadis": 167,
-    "sessions_avaluades": 7739
+    "hores_mortes_min": 72690,
+    "desplacaments_aula": 845,
+    "desplacaments_edifici": 7,
+    "canvis_franja": 1,
+    "canvis_aula": 40,
+    "r6_aules_te_extra_per_grup": 349,
+    "r6_canvis_te_paul_fora_passadis": 291,
+    "sessions_avaluades": 7739,
+    "canvis_franja_vs_referencia": 1,
+    "canvis_aula_vs_referencia": 44
   },
   "relaxacions_declarades": 0,
   "incompliments_declarats": 0,
   "context": {
     "semestre": 2,
-    "escenari": null,
+    "escenari": "paquet/escenaris/contingencies",
     "nomes_aules": false,
     "paquet_sha256": "22abb3e74b61c472e248fd1bb271b960f7e0dad8e5eb09225cde5af7cf5f348a",
-    "proposta_sha256": "72a2f72f0a329dba66b254d535c15b3133e2d1c8c56bdf8cd89c8e23840f7a78",
-    "referencia_sha256": null,
+    "proposta_sha256": "5d8b3de84e13ef358c6a5d10cd39db6ef66dc97fd544248c8ca39c7986d1a0ca",
+    "referencia_sha256": "5b67badf7fd811bb0b1de509f092abc3d7c10cdcaafc8ff2925a3709b666a1bb",
     "relaxacions_sha256": null
   }
 }
