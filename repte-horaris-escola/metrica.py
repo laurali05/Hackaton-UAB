@@ -19,7 +19,6 @@ mapa_ocupacio = pd.crosstab(
     index=act_con_aula['aula_partida'],
     columns=[act_con_aula['dia'], act_con_aula['h_ini']]
 )
-
 # Detectar solapamientos directos en la partida (> 1 actividad compartiendo aula y hora)
 solapaments = (mapa_ocupacio > 1).sum().sum()
 print(f"Franjas con solapamiento de aula en la partida: {solapaments}")
@@ -79,8 +78,8 @@ impacto_grados = desviades.groupby('titulacions_curs').agg(
     total_sessions_desviades=('total_sessions', 'sum')
 ).reset_index().sort_values(by='total_sessions_desviades', ascending=False)
 
-print("Top 10 Titulaciones y Cursos con más sesiones fuera de su turno:")
-print(impacto_grados.head(10).to_string(index=False))
+print("Titulaciones y Cursos con sesiones fuera de su turno:")
+print(impacto_grados.to_string(index=False))
 
 # Filtrar actividades cuyo turno real no coincide con el turno requerido (R1-TORN)
 df_desviadas = act_s2[act_s2['torn_requerit'] != act_s2['torn_real']].copy()
