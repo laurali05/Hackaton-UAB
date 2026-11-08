@@ -1,0 +1,35 @@
+# Claves y secretos (lo más importante)
+.env
+.env.*
+!.env.example
+
+# Archivos de estado y exportaciones generados por la app
+estat_incidencies.json
+_proposta_*.csv
+proposta-actual.csv
+relaxacions.csv
+registre_canvis.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Base de datos local / DuckDB (si genera archivos temporales)
+*.duckdb
+*.duckdb.tmp
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
