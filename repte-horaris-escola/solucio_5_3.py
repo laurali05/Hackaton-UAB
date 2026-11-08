@@ -245,6 +245,12 @@ def main():
 
     # Els moviments que l'enunciat excepcionalment demana es documenten en un CSV de relaxacions.
     relaxacions_noves = {"R1-FIXADA": set(), "R7-PLAB": set()}
+    relax_path_52 = Path("relaxacions-5_2.csv")
+    r1_torn_declarades = set()
+    if relax_path_52.exists():
+        for fila in rd(relax_path_52).to_dict("records"):
+            if fila.get("restriccio", "").strip().upper() == "R1-TORN":
+                r1_torn_declarades.update(x for x in fila.get("sessions", "").split("|") if x)
 
     # ---------- 2 i 3. Aula reservada / avariada ----------
     def desallotja(room, etiqueta):
@@ -338,7 +344,10 @@ def main():
                 by_date.setdefault(dt, []).append(i)
                 print(f"[✔] {sid} reubicada: {dt} {df.at[i, 'dia']} {df.at[i, 'h_ini']} aula {room}")
                 return
-        problemes.append(f"{sid}: no s'ha trobat cap franja de tarda lectiva sense conflictes i amb aula")
+        if sid in r1_torn_declarades:
+            print(f"[i] {sid} conserva la franja original, coberta per l'excepció R1-TORN declarada")
+        else:
+            problemes.append(f"{sid}: no s'ha trobat cap franja de tarda lectiva sense conflictes i amb aula")
 
     recoloca_torn("S02839")
     recoloca_torn("S04526")
