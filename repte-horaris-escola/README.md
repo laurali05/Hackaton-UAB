@@ -44,12 +44,12 @@ Cada punto compara la capacidad del aula asignada (eje horizontal) con el númer
 
 ## Propuestas del reto
 
-| Punto | Objetivo | Script y salida principal |
-| --- | --- | --- |
-| 5.1 | Asignar aulas en el segundo semestre sin cambiar días ni horas | `solucio_5_1.py` → `proposta-aules.csv` |
-| 5.2 | Reorganizar los turnos y optimizar el horario | `solucio_5_2.py` → `proposta-torns.csv` |
-| 5.3 | Adaptar la propuesta al escenario de imprevistos | `solucio_5_3.py` → `proposta-imprevist.csv` |
-| 5.4 | Incorporar el nuevo grado de 40 plazas | `solucions_5_4.py` → `proposta-grau-nou.csv` |
+| Punto | Objetivo | Script y propuesta | Excepciones / relajaciones |
+| --- | --- | --- | --- |
+| 5.1 | Asignar aulas en el segundo semestre sin cambiar días ni horas | `solucio_5_1.py` → `proposta-aules.csv` | — |
+| 5.2 | Reorganizar los turnos y optimizar el horario | `solucio_5_2.py` → `proposta-torns.csv` | `relaxacions-5_2.csv` |
+| 5.3 | Adaptar la propuesta al escenario de imprevistos | `solucio_5_3.py` → `proposta-imprevist.csv` | `relaxacions-imprevist.csv` (incluye las del 5.2 y las nuevas del escenario) |
+| 5.4 | Incorporar el nuevo grado de 40 plazas | `solucions_5_4.py` → `proposta-grau-nou.csv` | Reutiliza por defecto `relaxacions-5_2.csv` para validar la propuesta base; se puede indicar otro fichero con `--relaxacions` |
 
 El repositorio también contiene el análisis, el verificador del reto en `horaris/`, los datos de entrada en `paquet/` y archivos auxiliares con propuestas e informes. Consulta [`paquet/DICCIONARI.md`](paquet/DICCIONARI.md) para conocer las columnas y las limitaciones de los datos.
 
@@ -57,24 +57,21 @@ El repositorio también contiene el análisis, el verificador del reto en `horar
 
 Ejecuta los comandos desde la raíz del repositorio. Se necesita Python 3.10 o superior. El verificador solo usa la biblioteca estándar; los scripts de solución necesitan `pandas`.
 
-### Comprobar la partida del punto 5.1
-
-```powershell
-python -m horaris check paquet/proposta_partida.csv --semestre 2 --nomes-aules
-```
-
 ### Generar y validar el punto 5.1
 
 ```powershell
+python -m horaris check paquet/proposta_partida.csv --semestre 2 --nomes-aules
+
 python solucio_5_1.py
 python -m horaris check proposta-aules.csv --semestre 2 --nomes-aules --json informe-5_1.json --violacions violacions-5_1.csv
+
 ```
 
-### Generar y validar los demás puntos
+### Generar y validar los puntos 5.2, 5.3 y 5.4
 
 ```powershell
 python solucio_5_2.py
-python -m horaris check proposta-torns.csv --semestre 2 --json informe-5_2.json --violacions violacions-5_2.csv
+python -m horaris check proposta-torns.csv --semestre 2 --relaxacions relaxacions-5_2.csv --json informe-5_2.json --violacions violacions-5_2.csv
 
 python solucio_5_3.py --base proposta-torns.csv --check
 
@@ -82,6 +79,8 @@ python solucions_5_4.py proposta-torns.csv --out proposta-grau-nou.csv --check
 ```
 
 La comprobación principal es el **veredicto del verificador**, no una estimación de puntuación. El informe puede mostrar incumplimientos heredados del horario de partida; estos no cuentan como incumplimientos nuevos de la propuesta.
+
+Los ficheros de relajaciones documentan las excepciones declaradas con la regla afectada, los identificadores de sesión y su justificación. Para el 5.4 no hay un CSV independiente en el repositorio: el script valida con las relajaciones de la propuesta 5.2 salvo que se le pase otro fichero.
 
 ## Datos y uso responsable
 
