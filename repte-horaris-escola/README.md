@@ -38,18 +38,43 @@ En el segundo semestre, las sesiones que no tenían aula asignada suman **6.539 
 
 ### 5. Exceso de aforo en el horario de partida
 
-Cada punto compara la capacidad del aula asignada (eje horizontal) con el número de estudiantes matriculados (eje vertical). Los puntos sobre o por debajo de la diagonal caben en el aula; los que quedan por encima indican exceso de aforo. Se observan **43 sesiones afectadas en dos grupos**: 29 en Q4/0011 y 14 en Q3/0003.
+Cada punto compara la capacidad del aula asignada (eje horizontal) con el número de estudiantes matriculados (eje vertical). Los puntos situados sobre o por debajo de la diagonal caben en el aula; los que quedan por encima indican exceso de aforo. Se observan **43 sesiones afectadas en dos grupos**: 29 en Q4/0011 y 14 en Q3/0003.
 
 ![Sesiones con exceso de aforo en el aula de partida](grafics/5_excessos_aforament.png)
 
 ## Propuestas del reto
 
-| Punto | Objetivo | Script y propuesta | Excepciones / relajaciones |
-| --- | --- | --- | --- |
-| 5.1 | Asignar aulas en el segundo semestre sin cambiar días ni horas | `solucio_5_1.py` → `proposta-aules.csv` | — |
-| 5.2 | Reorganizar los turnos y optimizar el horario | `solucio_5_2.py` → `proposta-torns.csv` | `relaxacions-5_2.csv` |
-| 5.3 | Adaptar la propuesta al escenario de imprevistos | `solucio_5_3.py` → `proposta-imprevist.csv` | `relaxacions-imprevist.csv` (incluye las del 5.2 y las nuevas del escenario) |
-| 5.4 | Incorporar el nuevo grado de 40 plazas | `solucions_5_4.py` → `proposta-grau-nou.csv` | Reutiliza por defecto `relaxacions-5_2.csv` para validar la propuesta base; se puede indicar otro fichero con `--relaxacions` |
+| Punto | Objetivo | Script y salida principal |
+| --- | --- | --- |
+| 5.1 | Asignar aulas en el segundo semestre sin cambiar días ni horas | `solucio_5_1.py` → `proposta-aules.csv` |
+| 5.2 | Reorganizar los turnos y optimizar el horario | `solucio_5_2.py` → `proposta-torns.csv` |
+| 5.3 | Adaptar la propuesta al escenario de imprevistos | `solucio_5_3.py` → `proposta-imprevist.csv` |
+| 5.4 | Incorporar el nuevo grado de 40 plazas | `solucions_5_4.py` → `proposta-grau-nou.csv` |
+
+
+## Excepciones y relajaciones
+
+Las excepciones declaradas se guardan en archivos CSV. Cada registro indica la restricción afectada, las sesiones implicadas y la justificación correspondiente.
+
+### Punto 5.2
+
+El archivo `relaxacions-5_2.csv` registra una relajación de la restricción `R1-TORN`.
+
+- Sesiones afectadas: 4.749.
+- Motivo: las sesiones se mantienen en su turno de origen para garantizar que no se produzcan solapamientos.
+
+### Punto 5.3
+
+El archivo `relaxacions-imprevist.csv` incorpora la relajación heredada del punto 5.2 y las nuevas excepciones necesarias para el escenario de imprevistos:
+
+- `R1-TORN`: 4.749 sesiones heredadas de la propuesta 5.2.
+- `R1-FIXADA`: 8 sesiones evacuadas de un aula cerrada, manteniendo su día y hora.
+- `R7-PLAB`: 2 sesiones PLAB trasladadas debido a la reserva del aula `Q3/0013`.
+
+### Punto 5.4
+
+El punto 5.4 reutiliza por defecto el archivo `relaxacions-5_2.csv`. Si fuera necesario, puede utilizarse otro archivo de relajaciones mediante el parámetro `--relaxacions`.
+
 
 El repositorio también contiene el análisis, el verificador del reto en `horaris/`, los datos de entrada en `paquet/` y archivos auxiliares con propuestas e informes. Consulta [`paquet/DICCIONARI.md`](paquet/DICCIONARI.md) para conocer las columnas y las limitaciones de los datos.
 
@@ -57,34 +82,39 @@ El repositorio también contiene el análisis, el verificador del reto en `horar
 
 Ejecuta los comandos desde la raíz del repositorio. Se necesita Python 3.10 o superior. El verificador solo usa la biblioteca estándar; los scripts de solución necesitan `pandas`.
 
-
-### Generar y validar los puntos 5.1, 5.2, 5.3 y 5.4
-
 ```powershell
-
+# Comprobar la propuesta de partida
 python -m horaris check paquet/proposta_partida.csv --semestre 2 --nomes-aules
 
+# Punto 5.1: generar y validar la asignación de aulas
 python solucio_5_1.py
-python -m horaris check proposta-aules.csv --semestre 2 --nomes-aules --json informe-5_1.json --violacions violacions-5_1.csv
 
+python -m horaris check proposta-aules.csv `
+  --semestre 2 `
+  --nomes-aules `
+  --json informe-5_1.json `
+  --violacions violacions-5_1.csv
+
+# Punto 5.2: generar y validar la reorganización de turnos
 python solucio_5_2.py
-python -m horaris check proposta-torns.csv --semestre 2 --relaxacions relaxacions-5_2.csv --json informe-5_2.json --violacions violacions-5_2.csv
 
+python -m horaris check proposta-torns.csv `
+  --semestre 2 `
+  --relaxacions relaxacions-5_2.csv `
+  --json informe-5_2.json `
+  --violacions violacions-5_2.csv
+
+# Punto 5.3: generar y validar el escenario de imprevistos
 python solucio_5_3.py --base proposta-torns.csv --check
 
-python solucions_5_4.py proposta-torns.csv --out proposta-grau-nou.csv --check
+# Punto 5.4: generar y validar la incorporación del nuevo grado
+python solucions_5_4.py proposta-torns.csv `
+  --out proposta-grau-nou.csv `
+  --check
 ```
 
-La comprobación principal es el **veredicto del verificador**, no una estimación de puntuación. El informe puede mostrar incumplimientos heredados del horario de partida; estos no cuentan como incumplimientos nuevos de la propuesta.
-
-Los ficheros de relajaciones documentan las excepciones declaradas con la regla afectada, los identificadores de sesión y su justificación. Para el 5.4 no hay un CSV independiente en el repositorio: el script valida con las relajaciones de la propuesta 5.2 salvo que se le pase otro fichero.
-
-## Datos y uso responsable
-
-Los datos del paquete están seudonimizados, pero no son anónimos. Se usan únicamente para este reto: no intentes identificar a ninguna persona ni publiques o compartas los datos fuera del contexto autorizado de la hackatón.
 
 ## Equipo
 
 **404:Brain Cells** · UAB THE HACK! 2026
-
-Miembros: **Sofia Boyko**, **Laura Lope**, **Mafruha Hossain**, **Anisa Karim** y **Sofia Mirza**
+Miembros: **Laura Lope**, **Sofia Boyko**, **Mafruha Hossain**, **Anisa Karim** y **Sofia Mirza**
