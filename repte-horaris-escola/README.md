@@ -57,19 +57,16 @@ El repositorio también contiene el análisis, el verificador del reto en `horar
 
 Ejecuta los comandos desde la raíz del repositorio. Se necesita Python 3.10 o superior. El verificador solo usa la biblioteca estándar; los scripts de solución necesitan `pandas`.
 
-### Generar y validar el punto 5.1
+
+### Generar y validar los puntos 5.1, 5.2, 5.3 y 5.4
 
 ```powershell
+
 python -m horaris check paquet/proposta_partida.csv --semestre 2 --nomes-aules
 
 python solucio_5_1.py
 python -m horaris check proposta-aules.csv --semestre 2 --nomes-aules --json informe-5_1.json --violacions violacions-5_1.csv
 
-```
-
-### Generar y validar los puntos 5.2, 5.3 y 5.4
-
-```powershell
 python solucio_5_2.py
 python -m horaris check proposta-torns.csv --semestre 2 --relaxacions relaxacions-5_2.csv --json informe-5_2.json --violacions violacions-5_2.csv
 
