@@ -90,3 +90,5 @@ Los datos del paquete están seudonimizados, pero no son anónimos. Se usan úni
 ## Equipo
 
 **404:Brain Cells** · UAB THE HACK! 2026
+
+Miembros: **Sofia Boyko**, **Laura Lope**, **Mafruha Hossain**, **Anisa Karim** y **Sofia Mirza**
