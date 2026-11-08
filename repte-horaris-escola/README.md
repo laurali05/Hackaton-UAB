@@ -2,39 +2,43 @@
 
 Propuesta del equipo **404:Brain Cells** para el reto de la Escuela de Ingeniería de la UAB (UAB THE HACK! 2026). Analizamos la ocupación de los espacios y preparamos propuestas de asignación de aulas y horarios para el segundo semestre.
 
-El reto trabaja con 17.026 sesiones, 56 espacios y datos seudonimizados del curso 2026-27. Las propuestas deben respetar las restricciones del reto —capacidad, tipo de aula, sesiones compartidas y reserva mínima de aulas, entre otras— y reducir las horas muertas, los desplazamientos y los cambios respecto al horario de partida.
+
+Actualmente, en la Escuela de Ingeniería de la UAB los espacios se utilizan de diversas formas, principalmente para realizar sesiones de clases, problemas o seminarios. Además, también hay aulas de laboratorio específicas.
+Al analizar los horarios, la disponibilidad y la ocupación, se determina que se da más uso a las aulas por la mañana que por la tarde; en consecuencia, se genera un problema de alta ocupación por las mañanas y demasiado espacio libre en la franja de tarde.
+Debido a este problema, se ha creado un modelo nuevo con el que se intenta distribuir los horarios de forma que los cursos de primer y segundo año de carrera sean por la mañana y las clases de tercero, cuarto y quinto sean por la tarde, a excepción de los dobles grados y los másteres, que siempre son por la tarde.
+
 
 ## Análisis de los datos
 
 Las figuras de esta sección describen la **situación de partida** y ayudan a identificar los cuellos de botella antes de generar una propuesta nueva.
 
-### 1. Ocupación media por día y franja
+### 1. Ocupación por día y franja
 
-En el segundo semestre, la ocupación media más alta se concentra los martes y jueves a las 10:30, con 7 aulas ocupadas de media. El jueves a las 12:30 también se observa un pico de 7. Por la tarde, la ocupación es mucho menor.
+El mapa muestra la ocupación mediana de las aulas para cada día y franja: los tonos más oscuros indican más aulas ocupadas. Destacan el martes a las 10:30 y el jueves a las 10:30 y a las 12:30. A partir de las 13:30, la ocupación cae de forma marcada.
 
 ![Mapa de calor de la ocupación media de aulas por día y franja en el segundo semestre](grafics/1_heatmap_ocupacio_s2.png)
 
 ### 2. Pico de simultaneidad por la mañana
 
-El pico de partida es de **15 clases simultáneas**. Para la comparación del reto se consideran 19 aulas ordinarias disponibles, ya que se reservan dos de las 21. El pico actual queda por debajo de ese límite, pero la demanda se concentra en unas pocas franjas.
+La gráfica se centra en las clases de 1.º y 2.º. Hay muchas clases simultáneas a las 8:30 y, sobre todo, a las 10:30, cuando se alcanza el máximo de **15 clases**. En cambio, la tarde aparece casi vacía. La línea de 19 aulas representa la capacidad neta tras reservar dos de las 21 aulas ordinarias.
 
 ![Clases simultáneas por la mañana comparadas con la capacidad neta de 19 aulas](grafics/2_pico_matinal_vs_capacitat.png)
 
 ### 3. Cohortes con más sesiones fuera del turno previsto
 
-La figura muestra las cohortes que acumulan más sesiones fuera del turno que les corresponde según el modelo del reto. GEI de 3.º y 4.º destaca especialmente, por lo que sería uno de los grupos que más cambios necesitaría con la reorganización de turnos.
+La comparación toma la hora de inicio de cada sesión en el horario actual y la contrasta con el turno asignado en el nuevo modelo; después cuenta las sesiones que quedan fuera de turno por titulación y curso. GEI de 3.º y 4.º es la cohorte más desajustada, por delante de las siguientes del ranking.
 
 ![Diez cohortes con más sesiones fuera de turno en el segundo semestre](grafics/3_fora_de_torn_top_cohorts.png)
 
-### 4. Horas de aula sin asignar y disponibilidad
+### 4. Balance de horas-aula
 
-La figura compara **6.539 horas-aula** de sesiones que no tenían aula asignada con **19.712 horas** disponibles en las 19 aulas ordinarias. Es una comparación de volumen agregado: por sí sola no garantiza que cada sesión tenga un aula compatible y libre en su franja, con capacidad suficiente.
+En el segundo semestre, las sesiones que no tenían aula asignada suman **6.539 horas-aula**, frente a **19.712 horas** disponibles en las 19 aulas ordinarias. El total disponible supera la demanda, pero las horas no están repartidas de manera uniforme: la mañana concentra la demanda y tiene picos de hasta 15 clases simultáneas, mientras que buena parte de la tarde queda desaprovechada. Por eso el balance global no elimina los cuellos de botella de franjas concretas.
 
 ![Horas de aula sin asignar comparadas con las horas disponibles](grafics/4_balanc_hores_aula.png)
 
 ### 5. Exceso de aforo en el horario de partida
 
-En la partida hay **43 sesiones con exceso de aforo repartidas en dos grupos**: 29 asociadas al aula Q4/0011 y 14 a Q3/0003. La propuesta de aulas debe resolver estos casos asignando espacios con capacidad suficiente.
+Cada punto compara la capacidad del aula asignada (eje horizontal) con el número de estudiantes matriculados (eje vertical). Los puntos sobre o por debajo de la diagonal caben en el aula; los que quedan por encima indican exceso de aforo. Se observan **43 sesiones afectadas en dos grupos**: 29 en Q4/0011 y 14 en Q3/0003.
 
 ![Sesiones con exceso de aforo en el aula de partida](grafics/5_excessos_aforament.png)
 
