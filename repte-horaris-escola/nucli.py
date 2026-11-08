@@ -159,7 +159,9 @@ class Horari:
                              (f". Grups semblants: {sim}" if sim else "."), consulta=cons)
         ag = (d.groupby(["assig", "grup", "tipus", "dia", "h_ini", "fi0", "aula"], dropna=False)
                 .agg(n=("id_sessio", "size"), exemple=("id_sessio", "first")).reset_index())
-        linies = [f"{r.assig} · {r.grup} ({r.tipus}): {r.dia} {r.h_ini}-{r.fi0}, aula {r.aula or 'SENSE AULA a les dades'} "
+        NOMS_DIA = {"L": "dilluns", "M": "dimarts", "X": "dimecres", "J": "dijous", "V": "divendres"}
+        
+        linies = [f"{r.assig} · {r.grup} ({r.tipus}): {NOMS_DIA.get(str(r.dia).upper(), r.dia)} {r.h_ini}-{r.fi0}, aula {r.aula or 'SENSE AULA a les dades'} "
                   f"({r.n} sessions, p.ex. {r.exemple})" for r in ag.itertuples()]
         return self._res("; ".join(linies), self._vista(d).sort_values(["data", "hora"]), cons)
 
