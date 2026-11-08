@@ -1,15 +1,37 @@
 """Punt 5.2 — torns nous: 1r/2n al matí, 3r/4t a la tarda.
 
 Executa'l des de l'arrel del repte:
-    python solucio_5_2_completa.py
+    python solucio_5_3.py
 
-Genera únicament proposta-torns.csv. No crea fitxers de relaxacions.
-Les franges candidates han de respectar torn, calendari lectiu i conflictes; si
-no hi ha lloc, conserva la ubicació existent i informa de les sessions pendents.
+Genera:
+    proposta-torns.csv          proposta final (la millor que passa el verificador)
+    _candidates/                fitxers de treball: base i candidates (es poden esborrar)
+    relaxacions-5_2.csv         excepcions declarades
+    resum-5_2.md                resum per a la Junta Permanent
+    graella-setmanal-aules.csv  graella setmanal per aula (regla 10)
+
+Millores respecte de la versió anterior:
+  1. Reintents adaptatius: les sessions sense lloc passen al davant a l'intent
+     següent, i es conserva el millor intent (no l'últim).
+  2. Aula base per activitat i grup (TE/PAUL al mateix passadís, sense canviar
+     l'aula d'avui si no cal): menys canvis d'aula, desplaçaments i r6.
+  3. Optimitzador de franges amb les definicions EXACTES dels objectius del verificador
+     (hores mortes, desplaçaments, canvis de franja): mou sessions dins la seva setmana.
+  4. Neteja de conflictes d'aula (R4-AULA) i reserva d'aula lliure per a les pendents.
+  5. Guarda: cada candidata es passa pel verificador (python -m horaris check) i
+     es tria per (veredicte, incompliments que compten, declarats, objectius).
+     Si no es pot llegir l'informe, es conserva la base.
 Només necessita pandas.
 """
 from __future__ import annotations
 
+import json
+import os
+import shutil
+import subprocess
+import sys
+import time
+import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import date, timedelta
@@ -25,6 +47,12 @@ DIES = "LMXJV"
 MATI = (8 * 60 + 30, 14 * 60 + 30)
 TARDA = (14 * 60 + 30, 21 * 60)
 FRANGES_R8 = range(8 * 60 + 30, 21 * 60, 60)
+INTENTS = 8
+OPT_SEGONS = int(os.environ.get("OPT_SEGONS", "240"))  # temps màxim de l'optimitzador per candidata
+SORTIDA = ARREL / "proposta-torns.csv"
+CANDIDATES = ARREL / "_candidates"   # fitxers de treball (es poden esborrar)
+BASE_CSV = CANDIDATES / "base.csv"
+EXCEPCIONS = ARREL / "relaxacions-5_2.csv"
 
 
 def hm(h: str) -> int:
@@ -374,7 +402,6 @@ def construir_events(sessions: pd.DataFrame, aules: pd.DataFrame) -> tuple[list[
                   dict(grups_per_cohort),
                     s.torn_requerit, aula_origen, aules_event, not fixada)        # Les sessions fixades es mantenen; la resta poden canviar si cal.
         # Es prova primer la ubicació original per minimitzar moviments.
-        ja_correcta = dins_finestra(e.ini_origen, e.fi_origen, e.torn)
         if sense_espai and fixada:
             e.data, e.dia, e.ini, e.aula = (
                 e.data_origen, e.dia_origen, e.ini_origen, ""
@@ -466,13 +493,395 @@ Total de sessions modificades: **{total_canvis}**.
 """
 
 
+# ---------------------------------------------------------------------------
+# Estat, millores locals i escriptura
+# ---------------------------------------------------------------------------
+def instantania(movibles: list[Event]) -> dict[Event, tuple[str, str, int, str]]:
+    return {e: (e.data, e.dia, e.ini, e.aula) for e in movibles}
+
+
+def reconstruir(aules, dies_tancats, dies_avaluacio, aturades,
+                fixats: list[Event], movibles: list[Event], estat) -> Planificador:
+    p = Planificador(aules, dies_tancats, dies_avaluacio, aturades)
+    for e in fixats:
+        p.registrar(e)
+    for e in movibles:
+        p.posar(e, *estat[e])
+    return p
+
+
+def passadis(aula: str) -> tuple[str, str]:
+    """Mateixa espina i planta (Q4/0011 -> ('Q4', '0'))."""
+    if "/" not in aula:
+        return (aula, "")
+    esp, num = aula.split("/", 1)
+    return (esp, num[:1])
+
+
+def aula_lliure(p: Planificador, e: Event, data: str, ini: int, aula: str) -> bool:
+    """Només comprova solapament d'aula i reserva R8 (no docent/alumnat)."""
+    if not aula:
+        return True
+    fi = ini + (e.fi_origen - e.ini_origen)
+    for x in p.per_data[data]:
+        if x is not e and x.aula == aula and solapa(ini, fi, x.ini, x.fi):
+            return False
+    if aula in p.ordinaries:
+        for f in FRANGES_R8:
+            if toca_franja(ini, fi, f):
+                usades = p.ocupacio_r8[(data, f)]
+                if aula not in usades and len(usades) >= p.max_ordinaries:
+                    return False
+    return True
+
+
+def conflictes_aula(p: Planificador) -> list[tuple[Event, Event]]:
+    out = []
+    for data, evs in list(p.per_data.items()):
+        ev = sorted((x for x in evs if x.aula), key=lambda x: x.ini)
+        for i, a in enumerate(ev):
+            for b in ev[i + 1:]:
+                if b.ini >= a.fi:
+                    break
+                if a.aula == b.aula:
+                    out.append((a, b))
+    return out
+
+
+def _en_conflicte(p: Planificador, e: Event) -> bool:
+    return bool(e.aula) and any(
+        x is not e and x.aula == e.aula and solapa(e.ini, e.fi, x.ini, x.fi)
+        for x in p.per_data[e.data])
+
+
+def netejar_conflictes_aula(p: Planificador, movibles: list[Event]) -> int:
+    """Desfà solapaments d'aula (R4-AULA) on intervé alguna sessió flexible."""
+    mov = set(movibles)
+    arreglats = 0
+    for _ in range(3):
+        parelles = [(a, b) for a, b in conflictes_aula(p) if a in mov or b in mov]
+        if not parelles:
+            break
+        for a, b in parelles:
+            for e in sorted((x for x in (a, b) if x in mov),
+                            key=lambda x: not p.horari_legal(x, x.data, x.ini, x.fi)):
+                if not _en_conflicte(p, e):
+                    break
+                antic = (e.data, e.dia, e.ini, e.aula)
+                p.treure(e)
+                aules = sorted(e.aules, key=lambda r: (r != e.aula_origen, p.cap.get(r, 0)))
+                nova = next((r for r in aules
+                             if r and r != antic[3] and aula_lliure(p, e, antic[0], antic[2], r)), None)
+                if nova is not None:
+                    p.posar(e, antic[0], antic[1], antic[2], nova)
+                    arreglats += 1
+                    break
+                opcio = next(p.candidats(e), None)
+                if opcio is not None:
+                    p.posar(e, *opcio)
+                    arreglats += 1
+                    break
+                p.posar(e, *antic)
+    return arreglats
+
+
+def assignar_aules_base(p: Planificador, movibles: list[Event]) -> int:
+    """Una sola aula per activitat (mateix dia/hora cada setmana) i per grup."""
+    grups: dict[tuple, list[Event]] = defaultdict(list)
+    for e in movibles:
+        if e.aula and e.aules != [""]:
+            grups[(e.codi, e.tipus, e.num_grup, e.dia, e.ini)].append(e)
+    ordre = sorted(grups, key=lambda k: ({"TE": 0, "PAUL": 1}.get(k[1], 2), k))
+    base_linia: dict[tuple[str, str], str] = {}
+    canvis = 0
+    for k in ordre:
+        evs = grups[k]
+        lk = (k[0], evs[0].linia)
+        b = base_linia.get(lk)
+        permeses = set(evs[0].aules)
+        for e in evs[1:]:
+            permeses &= set(e.aules)
+        if not permeses:
+            continue
+        origen = evs[0].aula_origen
+        actual = evs[0].aula
+
+        def clau(a: str, b=b, origen=origen, actual=actual):
+            return (bool(origen) and a != origen,                  # no canviar l'aula d'avui
+                    b is not None and a != b,                      # aula base del grup
+                    b is not None and passadis(a) != passadis(b),  # mateix passadís
+                    a != actual,                                   # estabilitat
+                    p.cap.get(a, 0), a)
+
+        candidates = sorted(permeses, key=clau)
+        anteriors = [(e, e.data, e.dia, e.ini, e.aula) for e in evs]
+        for e in evs:
+            p.treure(e)
+        comuna = next((a for a in candidates
+                       if all(p.es_legal(e, e.data, e.dia, e.ini, a) for e in evs)), None)
+        if comuna is not None:
+            triades = [comuna] * len(evs)
+        else:  # cap aula val per a totes les setmanes: la millor per a cada una
+            triades = [next((a for a in candidates if p.es_legal(e, e.data, e.dia, e.ini, a)), a_ant)
+                       for e, _, _, _, a_ant in anteriors]
+        for (e, d, di, i, a_ant), a in zip(anteriors, triades):
+            p.posar(e, d, di, i, a)
+            canvis += a != a_ant
+        base_linia.setdefault(lk, triades[0])
+    return canvis
+
+
+def objectiu_data(events: list[Event]) -> tuple[int, int, int]:
+    """Hores mortes, desplaçaments d'aula i d'edifici d'un dia (mateixa lògica que check._objectius)."""
+    agenda: dict[tuple, list[Event]] = defaultdict(list)
+    for c in events:
+        sg = "*" if c.tipus == "TE" else c.num_grup
+        for coh in c.cohorts:
+            agenda[(coh, c.linia, sg)].append(c)
+    linies: dict[tuple, set] = defaultdict(set)
+    for (coh, lin, sg) in agenda:
+        linies[(coh, lin)].add(sg)
+    mortes = desp = edif = 0
+    for (coh, lin), sgs in linies.items():
+        teoria = agenda.get((coh, lin, "*"), [])
+        reals = [x for x in sgs if x != "*"] or ["*"]
+        for sg in reals:
+            cs = teoria + (agenda.get((coh, lin, sg), []) if sg != "*" else [])
+            if len(cs) < 2:
+                continue
+            cs = sorted({id(c): c for c in cs}.values(), key=lambda c: c.ini)
+            for a, b in zip(cs, cs[1:]):
+                gap = b.ini - a.fi
+                if gap > 0 and (a.fi <= MATI[1]) == (b.ini < MATI[1]):
+                    mortes += gap
+                if a.aula and b.aula and a.aula != b.aula:
+                    desp += 1
+                    if a.aula.split("/")[0] != b.aula.split("/")[0]:
+                        edif += 1
+    return mortes, desp, edif
+
+
+def optimitzar_slots(p: Planificador, movibles: list[Event], segons: float) -> int:
+    """Mou sessions dins la seva setmana si millora (hores mortes + desplaçaments + canvis de franja),
+    amb pesos normalitzats pel valor actual de cada objectiu. Cada moviment passa per es_legal()."""
+    t0 = time.time()
+    tot_m = tot_d = 0
+    for data in list(p.per_data):
+        m, d, _ = objectiu_data(p.per_data[data])
+        tot_m += m
+        tot_d += d
+    franja = sum(len(e.ids) for e in movibles if (e.dia, e.ini) != (e.dia_origen, e.ini_origen))
+    wm, wd, wf = 1 / max(tot_m, 1), 1 / max(tot_d, 1), 1 / max(franja, 1)
+    pes = lambda t: wm * t[0] + wd * t[1] + 1000 * wd * t[2]
+    fets = 0
+    moguts = [e for e in movibles if e.movible and (e.dia, e.ini) != (e.dia_origen, e.ini_origen)]
+    resta = [e for e in movibles if e.movible and (e.dia, e.ini) == (e.dia_origen, e.ini_origen)]
+    for llista in (moguts, resta):
+        for e in llista:
+            if time.time() - t0 > segons:
+                return fets
+            if not p.horari_legal(e, e.data, e.ini, e.fi):
+                continue  # sessió pendent d'excepció: no es toca
+            antic = (e.data, e.dia, e.ini, e.aula)
+            dur = e.fi_origen - e.ini_origen
+            inici, final = MATI if e.torn == "mati" else TARDA
+            hores = list(range(inici, final - dur + 1, 30))
+            if dins_finestra(e.ini_origen, e.fi_origen, e.torn) and e.ini_origen not in hores:
+                hores.append(e.ini_origen)
+            p.treure(e)
+            cache: dict[str, float] = {}
+
+            def valor(data: str, dia: str, ini: int) -> float:
+                if data not in cache:
+                    cache[data] = pes(objectiu_data(p.per_data[data]))
+                e.ini = ini
+                v = pes(objectiu_data(p.per_data[data] + [e])) - cache[data]
+                return v + wf * len(e.ids) * ((dia, ini) != (e.dia_origen, e.ini_origen))
+
+            millor_v, millor_pos = valor(antic[0], antic[1], antic[2]), None
+            for dia in DIES:
+                data = dia_setmana(e.data_origen, dia)
+                for ini in hores:
+                    if (data, ini) == (antic[0], antic[2]):
+                        continue
+                    if not p.es_legal(e, data, dia, ini, antic[3]):
+                        continue
+                    v = valor(data, dia, ini)
+                    if v < millor_v - 1e-12:
+                        millor_v, millor_pos = v, (data, dia, ini)
+            if millor_pos is None:
+                p.posar(e, *antic)
+            else:
+                data, dia, ini = millor_pos
+                p.posar(e, data, dia, ini, antic[3])
+                fets += 1
+    return fets
+
+
+def indicadors(p: Planificador, movibles: list[Event]) -> dict:
+    """Indicadors propis i aproximats (el bo és el del verificador)."""
+    franja = sum(len(e.ids) for e in movibles if (e.dia, e.ini) != (e.dia_origen, e.ini_origen))
+    aula = sum(len(e.ids) for e in movibles if e.aula_origen and e.aula != e.aula_origen)
+    mortes = desp = 0
+    for data in list(p.per_data):
+        m, d, _ = objectiu_data(p.per_data[data])
+        mortes += m
+        desp += d
+    return {"canvis_franja": franja, "canvis_aula": aula,
+            "desplacaments": desp, "hores_mortes_min": mortes,
+            "conflictes_aula": len(conflictes_aula(p))}
+
+
+def escriure_proposta(p: Planificador, movibles: list[Event], proposta: pd.DataFrame, cami: Path) -> None:
+    colocades = set(p.colocades)
+    per_id = {sid: e for e in movibles if e in colocades for sid in e.ids}
+    out = proposta.copy()
+    out["dia"] = out.id_sessio.map({s: e.dia for s, e in per_id.items()}).fillna(out["dia"])
+    out["h_ini"] = out.id_sessio.map({s: hhmm(e.ini) for s, e in per_id.items()}).fillna(out["h_ini"])
+    out["aula"] = out.id_sessio.map({s: e.aula for s, e in per_id.items()}).fillna(out["aula"])
+    tmp = cami.with_name("." + cami.name + ".tmp")
+    out.to_csv(tmp, index=False)
+    # El reemplaç al final evita deixar un CSV truncat si l'escriptura falla.
+    tmp.replace(cami)
+
+
+def calcular_excepcions(movibles: list[Event]) -> tuple[list[str], list[str]]:
+    torn_incorrecte_a_origen = lambda e: (
+        e.torn in {"mati", "tarda"}
+        and e.data == e.data_origen
+        and e.ini == e.ini_origen
+        and ((e.ini_origen < MATI[1]) != (e.torn == "mati"))
+    )
+    fixades_r1 = sorted({
+        sid for e in movibles
+        if torn_incorrecte_a_origen(e) and not e.movible and not e.aula_origen and e.aula
+        for sid in e.ids
+    })
+    pendents_r1 = sorted({
+        sid for e in movibles
+        if torn_incorrecte_a_origen(e) and e.movible
+        for sid in e.ids
+    })
+    return fixades_r1, pendents_r1
+
+
+def escriure_excepcions(fixades_r1: list[str], pendents_r1: list[str], detall: list[str]) -> None:
+    """IMPORTANT: la fila de les sessions fixades NO s'ha de treure. Són sessions fixes de 1r/2n a la tarda
+    a les quals cal posar aula (R5); el verificador les compta com a R1-TORN i només es pot declarar."""
+    files = []
+    if fixades_r1:
+        files.append({
+            "restriccio": "R1-TORN",
+            "sessions": "|".join(fixades_r1),
+            "justificacio": (
+                "Sessions fixades de GEI/GEET+GEST de 1r o 2n conservades al dia i hora "
+                "de la partida (la regla 1 diu que no es toquen); només s'hi assigna aula "
+                "per complir R5-SENSE-AULA. Es demana excepció explícita a R1-TORN."
+            ),
+        })
+    if pendents_r1:
+        files.append({
+            "restriccio": "R1-TORN",
+            "sessions": "|".join(pendents_r1),
+            "justificacio": (
+                "L'heurística (totes les franges i aules del torn dins la setmana, més reparació "
+                "desplaçant fins a 6 sessions flexibles bloquejadores) no ha trobat cap franja de "
+                "tarda lectiva sense conflicte. Es conserva el dia i hora d'origen. Detall: "
+                + " | ".join(detall)
+            ),
+        })
+    pd.DataFrame(files, columns=["restriccio", "sessions", "justificacio"]).to_csv(
+        EXCEPCIONS, index=False, encoding="utf-8")
+
+
+def escriure_graella(p: Planificador) -> None:
+    comptes: dict[tuple, int] = defaultdict(int)
+    for e in p.colocades:
+        if e.aula:
+            comptes[(e.aula, e.dia, hhmm(e.ini), hhmm(e.fi), e.codi, e.tipus,
+                     f"{e.tipus}/{e.num_grup}")] += 1
+    ordre = {d: i for i, d in enumerate(DIES)}
+    files = [dict(aula=k[0], dia=k[1], h_ini=k[2], h_fi=k[3], codi=k[4], tipus=k[5],
+                  grup=k[6], setmanes=v) for k, v in comptes.items()]
+    files.sort(key=lambda r: (r["aula"], ordre[r["dia"]], r["h_ini"]))
+    pd.DataFrame(files, columns=["aula", "dia", "h_ini", "h_fi", "codi", "tipus", "grup",
+                                 "setmanes"]).to_csv(ARREL / "graella-setmanal-aules.csv", index=False)
+
+
+# ---------------------------------------------------------------------------
+# Guarda amb el verificador oficial
+# ---------------------------------------------------------------------------
+CLAUS_OBJECTIU = ("hores_mortes", "mortes", "desplacament", "canvis_franja",
+                  "canvis_aula", "passadis", "te_extra")
+
+
+def _norm(text: str) -> str:
+    t = unicodedata.normalize("NFD", text.lower())
+    return "".join(c for c in t if unicodedata.category(c) != "Mn")
+
+
+def _planar(obj, prefix: str = ""):
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            yield from _planar(v, f"{prefix}.{k}" if prefix else str(k))
+    elif not isinstance(obj, list):
+        yield prefix, obj
+
+
+def _num(v) -> bool:
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def llegir_informe(cami: Path) -> dict | None:
+    if not cami.exists():
+        return None
+    dades = json.loads(cami.read_text(encoding="utf-8"))
+    plana = list(_planar(dades))
+    veredicte = next((_norm(str(v)).upper() for _, v in plana
+                      if isinstance(v, str) and _norm(v).upper().startswith(("VALIDA", "NO VALIDA"))), None)
+    if veredicte is None:
+        return None
+    rang = 0 if veredicte.startswith("NO") else 1 if "RELAX" in veredicte else 2
+    declarats = sum(v for k, v in plana if "incompliments_declarats" in _norm(k) and _num(v))
+    compten = sum(v for k, v in plana if _norm(k).split(".")[-1] == "compten" and _num(v))
+    objectius = {k: v for k, v in plana
+                 if _num(v) and any(c in _norm(k) for c in CLAUS_OBJECTIU) and "context" not in _norm(k)}
+    return {"rang": rang, "declarats": declarats, "compten": compten, "objectius": objectius}
+
+
+def verificar(csv: Path) -> dict | None:
+    sortida = CANDIDATES / f"informe-{csv.stem}.json"
+    viol = CANDIDATES / f"violacions-{csv.stem}.csv"
+    cmd = [sys.executable, "-m", "horaris", "check", str(csv.relative_to(ARREL)), "--semestre", "2",
+           "--relaxacions", EXCEPCIONS.name, "--json", str(sortida.relative_to(ARREL)),
+           "--violacions", str(viol.relative_to(ARREL))]
+    try:
+        subprocess.run(cmd, cwd=ARREL, capture_output=True, text=True, timeout=1800,
+                       env={**os.environ, "PYTHONUTF8": "1"})
+        return llegir_informe(sortida)
+    except Exception as exc:  # noqa: BLE001 - la guarda mai ha de trencar el lliurament
+        print(f"  (no s'ha pogut verificar {csv.name}: {exc})")
+        return None
+
+
+def clau_validesa(inf: dict) -> tuple:
+    return (-inf["rang"], inf["compten"], inf["declarats"])
+
+
+def no_pitjor(base: dict, nou: dict) -> bool:
+    if clau_validesa(nou) > clau_validesa(base):
+        return False
+    if not base["objectius"] or not nou["objectius"]:
+        return False  # no es poden comparar els objectius: no es canvia res
+    return all(nou["objectius"].get(k, v) <= v for k, v in base["objectius"].items())
+
+
 def main() -> None:
     sessions = pd.read_csv(PAQUET / "sessions.csv", dtype=str).fillna("")
     aules = pd.read_csv(PAQUET / "aules.csv", dtype=str).fillna("")
     aules["capacitat"] = aules.capacitat.astype(int)
-    proposta_actual = ARREL / "proposta-torns.csv"
-    proposta_path = proposta_actual if proposta_actual.exists() else PAQUET / "proposta_partida.csv"
-    proposta = pd.read_csv(proposta_path, dtype=str).fillna("")
+    # Sempre partim de la partida: així cada execució dona el mateix resultat.
+    proposta = pd.read_csv(PAQUET / "proposta_partida.csv", dtype=str).fillna("")
     proposta_origen = proposta.set_index("id_sessio")
     calendari = pd.read_csv(PAQUET / "calendari.csv", dtype=str).fillna("")
     # Replica R2-CALENDARI: festius/no lectius tanquen tot el dia; les dates
@@ -496,61 +905,71 @@ def main() -> None:
         else:
             dies_tancats.add(fila.data)
     movibles, fixats = construir_events(sessions, aules)
-    # Una passada vorace pot consumir una aula/franja necessària per a una
-    # sessió més restringida. Provem diversos desempats deterministes; cada
-    # passada comença de zero i no modifica cap fitxer fins a trobar lloc per a tot.
-    p = None
-    sense_lloc = []
-    for attempt in range(4):
+    ctx = (aules, dies_tancats, dies_avaluacio, aturades, fixats, movibles)
+
+    # --- 1. Planificació voraç amb reintents adaptatius -------------------
+    prioritaris: set[str] = set()
+    millor: tuple[dict, list[str]] | None = None
+    for attempt in range(INTENTS):
         current = Planificador(aules, dies_tancats, dies_avaluacio, aturades)
         for e in fixats:
             current.registrar(e)
         ordered = list(movibles)
-        if attempt == 0:
-            ordered.sort(key=lambda e: (e.movible, len(e.aules), -e.alumnes,
+        variant = attempt % 4
+        if variant == 0:
+            ordered.sort(key=lambda e: (e.ids[0] not in prioritaris, e.movible, len(e.aules), -e.alumnes,
                                         -(e.fi_origen - e.ini_origen), e.key))
-        elif attempt == 1:
-            ordered.sort(key=lambda e: (e.movible, len(e.aules), -e.alumnes,
+        elif variant == 1:
+            ordered.sort(key=lambda e: (e.ids[0] not in prioritaris, e.movible, len(e.aules), -e.alumnes,
                                         -(e.fi_origen - e.ini_origen), e.dia_origen, e.ini_origen))
-        elif attempt == 2:
-            ordered.sort(key=lambda e: (e.movible, len(e.aules), -(e.fi_origen - e.ini_origen),
-                                        -e.alumnes, e.dia_origen, e.ini_origen, e.key))
+        elif variant == 2:
+            ordered.sort(key=lambda e: (e.ids[0] not in prioritaris, e.movible, len(e.aules),
+                                        -(e.fi_origen - e.ini_origen), -e.alumnes, e.dia_origen,
+                                        e.ini_origen, e.key))
         else:
-            ordered.sort(key=lambda e: (e.movible, len(e.aules), -e.alumnes,
+            ordered.sort(key=lambda e: (e.ids[0] not in prioritaris, e.movible, len(e.aules), -e.alumnes,
                                         -(e.fi_origen - e.ini_origen), e.key[::-1]))
-        sense_lloc = []
+        sense_lloc: list[str] = []
         for e in ordered:
             opcio = next(current.candidats(e), None)
             if opcio is None:
                 sense_lloc.append(e.ids[0])
-                # Reserva l'horari original i conserva l'aula de la proposta
-                # anterior si encara és compatible.
-                aula_actual = str(proposta_origen.loc[e.ids[0], "aula"])
-                aula_reserva = aula_actual if aula_actual in e.aules else e.aula_origen
-                current.posar(
-                    e, e.data_origen, e.dia_origen, e.ini_origen, aula_reserva
-                )
+                # Reserva l'horari original amb una aula LLIURE a aquella franja (evita R4-AULA).
+                aula_actual = str(proposta_origen.loc[e.ids[0], "aula"]) if e.ids[0] in proposta_origen.index else ""
+                ordre_aules = ([aula_actual] if aula_actual in e.aules else []) + sorted(
+                    e.aules, key=lambda a: (a != e.aula_origen, current.cap.get(a, 0)))
+                aula_reserva = next((a for a in ordre_aules
+                                     if aula_lliure(current, e, e.data_origen, e.ini_origen, a)), None)
+                if aula_reserva is None:
+                    aula_reserva = aula_actual if aula_actual in e.aules else e.aula_origen
+                current.posar(e, e.data_origen, e.dia_origen, e.ini_origen, aula_reserva)
             else:
                 current.posar(e, *opcio)
-        p = current
+        print(f"Intent {attempt + 1}/{INTENTS}: {len(sense_lloc)} sessions sense lloc")
+        if millor is None or len(sense_lloc) < len(millor[1]):
+            millor = (instantania(movibles), list(sense_lloc))
+        prioritaris.update(sense_lloc)
         if not sense_lloc:
             break
+    assert millor is not None
+    estat_millor, sense_lloc = millor
+    p = reconstruir(*ctx, estat_millor)
+
+    # --- 2. Reparació de les pendents -------------------------------------
     if sense_lloc:
         per_id = {sid: e for e in movibles for sid in e.ids}
-        pendents = list(sense_lloc)
-        for sid in pendents:
+        for sid in list(sense_lloc):
             if reparar_una_sessio(p, per_id[sid]):
                 sense_lloc.remove(sid)
+    diagnosi: list[str] = []
     if sense_lloc:
         per_id = {sid: e for e in movibles for sid in e.ids}
-        diagnosi = []
         for sid in sense_lloc[:20]:
             e = per_id[sid]
             options = [
                 (p.bloquejadors(e, data, ini, aula), (data, dia, ini, aula))
                 for data, dia, ini, aula in p.candidats(e, ignorar_conflictes=True)
             ]
-            blockage = ""
             if options:
                 blockers, slot = min(options, key=lambda pair: len(pair[0]))
                 names = ", ".join(
@@ -561,87 +980,75 @@ def main() -> None:
                 blockage = "; no té franges legals segons torn/calendari"
             diagnosi.append(
                 f"{sid} ({e.codi} {e.tipus}/{e.num_grup}, torn={e.torn}, alumnes={e.alumnes}, "
-                f"aules compatibles={len(e.aules)}: {', '.join(e.aules) or 'cap'}{blockage})"
+                f"aules compatibles={len(e.aules)}{blockage})"
             )
-        print(
-            "La heurística no ha trobat lloc per a aquestes sessions:\n  "
-            + "\n  ".join(diagnosi)
-            + "\nNo s'han aplicat relaxacions. Les sessions sense franja lectiva compatible conserven "
-              "el dia i l'hora originals; es desarà la proposta per revisar-la."
-        )
+        print("La heurística no ha trobat lloc per a aquestes sessions:\n  " + "\n  ".join(diagnosi))
+    arreglats = netejar_conflictes_aula(p, movibles)
+    print(f"Conflictes d'aula arreglats: {arreglats}; pendents: {len(conflictes_aula(p))} (parelles)")
 
-    # Exporta només les activitats realment col·locades. Les pendents conserven
-    # dia/hora/aula de la proposta base, i queden llistades com a incompletes.
-    col·locades = set(p.colocades)
-    per_id = {sid: e for e in movibles if e in col·locades for sid in e.ids}
-    movibles_col_locades = [e for e in movibles if e in col·locades]
-    nous_dies = {sid: e.dia for sid, e in per_id.items()}
-    noves_hores = {sid: hhmm(e.ini) for sid, e in per_id.items()}
-    noves_aules = {sid: e.aula for sid, e in per_id.items()}
-    proposta["dia"] = proposta.id_sessio.map(nous_dies).fillna(proposta["dia"])
-    proposta["h_ini"] = proposta.id_sessio.map(noves_hores).fillna(proposta["h_ini"])
-    proposta["aula"] = proposta.id_sessio.map(noves_aules).fillna(proposta["aula"])
-    output_path = ARREL / "proposta-torns.csv"
-    temp_path = ARREL / ".proposta-torns.tmp.csv"
-    proposta.to_csv(temp_path, index=False)
-    # El reemplazo al final evita dejar un CSV truncado si la escritura falla.
-    temp_path.replace(output_path)
-    torn_incorrecte_a_origen = lambda e: (
-        e.torn in {"mati", "tarda"}
-        and e.data == e.data_origen
-        and e.ini == e.ini_origen
-        and ((e.ini_origen < MATI[1]) != (e.torn == "mati"))
-    )
-    fixades_r1 = sorted({
-        sid
-        for e in movibles_col_locades
-        if torn_incorrecte_a_origen(e) and not e.movible
-        and not e.aula_origen and e.aula
-        for sid in e.ids
-    })
-    pendents_r1 = sorted({
-        sid
-        for e in movibles_col_locades
-        if torn_incorrecte_a_origen(e) and e.movible
-        for sid in e.ids
-    })
-    files_excepcions = []
-    if fixades_r1:
-        files_excepcions.append({
-            "restriccio": "R1-TORN",
-            "sessions": "|".join(fixades_r1),
-            "justificacio": (
-                "Sessions fixades de GEI/GEET+GEST de 1r o 2n conservades al dia i hora "
-                "de la partida; només s'hi assigna aula quan cal per complir R5-SENSE-AULA. "
-                "Es demana excepció explícita a R1-TORN."
-            ),
-        })
-    if pendents_r1:
-        files_excepcions.append({
-            "restriccio": "R1-TORN",
-            "sessions": "|".join(pendents_r1),
-            "justificacio": (
-                "No s'ha trobat cap franja de tarda lectiva sense conflictes dins la setmana. "
-                "S02839 queda bloquejada per S01504 i els docents compartits; S04526 només "
-                "té Q1/0007 i Q1/0019, ocupades per sessions fixades a les franges disponibles. "
-                "Es demana excepció explícita a R1-TORN i es conserva el dia i hora d'origen."
-            ),
-        })
-    excepcions_path = ARREL / "relaxacions-5_2.csv"
-    pd.DataFrame(
-        files_excepcions,
-        columns=["restriccio", "sessions", "justificacio"],
-    ).to_csv(excepcions_path, index=False, encoding="utf-8")
+    # --- 3. Base ----------------------------------------------------------
+    CANDIDATES.mkdir(exist_ok=True)
+    estat_base = instantania(movibles)
+    escriure_proposta(p, movibles, proposta, BASE_CSV)
+    fixades_r1, pendents_r1 = calcular_excepcions(movibles)
+    escriure_excepcions(fixades_r1, pendents_r1, diagnosi)
     ids_excepcionats = set(fixades_r1) | set(pendents_r1)
     pendents_sense_excepcio = set(sense_lloc) - ids_excepcionats
+    print("Indicadors de la base:", indicadors(p, movibles))
+
+    # --- 4. Candidates, validades pel verificador -------------------------
+    print("Verificant la base...")
+    inf_base = verificar(BASE_CSV)
+    candidates_ok = []
+    for nom, optimitzar in (("aules", False), ("optim", True)):
+        try:
+            p = reconstruir(*ctx, estat_base)
+            n_o = optimitzar_slots(p, movibles, OPT_SEGONS) if optimitzar else 0
+            n_b = assignar_aules_base(p, movibles)
+            n_c = netejar_conflictes_aula(p, movibles)
+            if calcular_excepcions(movibles) != (fixades_r1, pendents_r1):
+                print(f"Candidata {nom}: canvien les excepcions R1, es descarta.")
+                continue
+            ruta = CANDIDATES / f"{nom}.csv"
+            escriure_proposta(p, movibles, proposta, ruta)
+            print(f"Candidata {nom}: {n_o} franges mogudes, {n_b} aules canviades, "
+                  f"{n_c} conflictes arreglats -> {indicadors(p, movibles)}")
+            inf = verificar(ruta)
+            if inf:
+                print(f"  verificador: rang={inf['rang']} compten={inf['compten']} "
+                      f"declarats={inf['declarats']} suma_objectius={sum(inf['objectius'].values())}")
+                candidates_ok.append((nom, ruta, inf, instantania(movibles)))
+        except Exception as exc:  # noqa: BLE001
+            print(f"Candidata {nom} descartada per error: {type(exc).__name__}: {exc}")
+
+    triat = ("base", BASE_CSV, estat_base)
+    if inf_base:
+        print(f"  base: rang={inf_base['rang']} compten={inf_base['compten']} "
+              f"declarats={inf_base['declarats']} suma_objectius={sum(inf_base['objectius'].values())}")
+        bons = [c for c in candidates_ok
+                if clau_validesa(c[2]) < clau_validesa(inf_base) or no_pitjor(inf_base, c[2])]
+        if bons:
+            nom, ruta, inf, estat = min(bons, key=lambda c: (clau_validesa(c[2]), sum(c[2]["objectius"].values())))
+            if clau_validesa(inf) < clau_validesa(inf_base) or \
+                    sum(inf["objectius"].values()) < sum(inf_base["objectius"].values()):
+                triat = (nom, ruta, estat)
+    p = reconstruir(*ctx, triat[2])
+    shutil.copyfile(triat[1], SORTIDA)
+    print(f"Proposta final: {triat[0]} -> {SORTIDA.name}")
+
+    # --- 5. Lliuraments complementaris ------------------------------------
+    text = resum(p.colocades, movibles, p, sense_lloc=sorted(pendents_sense_excepcio),
+                 relaxacions_r1=fixades_r1 + pendents_r1)
+    (ARREL / "resum-5_2.md").write_text(text, encoding="utf-8")
+    escriure_graella(p)
+
     estat = "INCOMPLETA" if pendents_sense_excepcio else (
         "COMPLETA AMB EXCEPCIONS R1" if ids_excepcionats else "COMPLETA"
     )
-    print(f"Actualitzat proposta-torns.csv ({estat})")
+    print(f"Actualitzat {SORTIDA.name} ({estat})")
     print(f"Excepcions R1 documentades: {len(ids_excepcionats)}")
-    if pendents_sense_excepcio:
-        print(f"Sessions pendents sense excepcio declarada: {', '.join(sorted(pendents_sense_excepcio))}")
-    print("Valida-ho amb: python -m horaris check proposta-torns.csv --semestre 2 --relaxacions relaxacions-5_2.csv")
+    print("Valida-ho amb: python -m horaris check proposta-torns.csv --semestre 2 "
+          "--relaxacions relaxacions-5_2.csv --json informe.json --violacions violacions.csv")
 
 
 if __name__ == "__main__":
