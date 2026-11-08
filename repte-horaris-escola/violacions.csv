@@ -1,52 +1,52 @@
 regla,sessions,detall,compta,declarada,heretada
-R1-TORN,S02401,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02402,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02403,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02404,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02405,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02406,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02412,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02413,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02414,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02415,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02416,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02417,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02418,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02419,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02420,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02421,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02422,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02429,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02430,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02431,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02432,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02433,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S02434,mati: 15:00-17:00,0,0,fixada
+R1-TORN,S02401,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02402,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02403,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02404,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02405,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02406,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02412,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02413,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02414,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02415,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02416,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02417,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02418,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02419,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02420,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02421,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02422,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02429,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02430,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02431,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02432,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02433,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S02434,mati: 15:00-17:00,0,1,fixada
 R1-TORN,S02839,tarda: 11:30-13:30,0,1,
-R1-TORN,S03036,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03037,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03038,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03039,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03040,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03041,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03042,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03043,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03044,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03045,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03046,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03047,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03048,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03049,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03050,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03051,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03052,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03053,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03060,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03061,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03062,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03063,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03064,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S03065,tarda: 08:30-10:30,0,0,fixada
+R1-TORN,S03036,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03037,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03038,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03039,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03040,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03041,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03042,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03043,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03044,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03045,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03046,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03047,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03048,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03049,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03050,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03051,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03052,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03053,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03060,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03061,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03062,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03063,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03064,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S03065,tarda: 08:30-10:30,0,1,fixada
 R1-TORN,S03596,mati: 15:00-17:00,0,1,
 R1-TORN,S03597,mati: 17:00-19:00,0,1,
 R1-TORN,S03598,mati: 15:00-17:00,0,1,
@@ -74,35 +74,33 @@ R1-TORN,S03619,mati: 17:00-19:00,0,1,
 R1-TORN,S03620,mati: 15:00-17:00,0,1,
 R1-TORN,S03621,mati: 17:00-19:00,0,1,
 R1-TORN,S03622,mati: 15:00-17:00,0,1,
-R1-TORN,S03623,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03624,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03625,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03626,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03627,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03628,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03629,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03630,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03631,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03632,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03633,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03634,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03635,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03636,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03637,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03638,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03639,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03640,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03641,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03642,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03643,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03644,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03645,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03646,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03647,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03648,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S03649,tarda: 12:30-14:30,0,0,fixada
-R1-FIXADA,S03945,V 09:30 Q3/0013 -> V 09:30 Q3/0003,0,1,
-R1-FIXADA,S03975,V 10:30 Q3/0013 -> V 10:30 Q3/0003,0,1,
+R1-TORN,S03623,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03624,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03625,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03626,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03627,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03628,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03629,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03630,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03631,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03632,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03633,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03634,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03635,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03636,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03637,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03638,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03639,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03640,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03641,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03642,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03643,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03644,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03645,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03646,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03647,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03648,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S03649,tarda: 12:30-14:30,0,1,fixada
 R1-TORN,S03984,mati: 17:00-18:00,0,1,
 R1-TORN,S03985,mati: 17:00-18:00,0,1,
 R1-TORN,S03986,mati: 17:00-18:00,0,1,
@@ -147,18 +145,18 @@ R1-TORN,S04024,mati: 17:00-18:00,0,1,
 R1-TORN,S04025,mati: 17:00-18:00,0,1,
 R1-TORN,S04026,mati: 17:00-18:00,0,1,
 R1-TORN,S04027,mati: 17:00-18:00,0,1,
-R1-TORN,S04058,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04059,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04060,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04061,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04062,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04063,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04064,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04065,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04066,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04067,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04068,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S04069,mati: 17:00-19:00,0,0,fixada
+R1-TORN,S04058,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04059,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04060,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04061,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04062,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04063,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04064,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04065,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04066,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04067,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04068,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S04069,mati: 17:00-19:00,0,1,fixada
 R1-TORN,S04144,mati: 15:00-17:00,0,1,
 R1-TORN,S04145,mati: 15:00-17:00,0,1,
 R1-TORN,S04146,mati: 15:00-17:00,0,1,
@@ -185,186 +183,186 @@ R1-TORN,S04166,mati: 15:00-17:00,0,1,
 R1-TORN,S04167,mati: 15:00-17:00,0,1,
 R1-TORN,S04168,mati: 15:00-17:00,0,1,
 R1-TORN,S04169,mati: 15:00-17:00,0,1,
-R1-TORN,S04416,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04417,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04418,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04419,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04420,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04421,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04422,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04423,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04424,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04425,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04426,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04427,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04428,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04429,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04430,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04431,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04432,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04433,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04434,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04435,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04436,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04437,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04438,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04439,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04452,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04453,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04454,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04455,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04456,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04457,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04458,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04459,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04460,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04461,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S04462,tarda: 10:30-12:30,0,0,fixada
+R1-TORN,S04416,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04417,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04418,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04419,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04420,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04421,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04422,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04423,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04424,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04425,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04426,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04427,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04428,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04429,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04430,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04431,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04432,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04433,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04434,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04435,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04436,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04437,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04438,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04439,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04452,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04453,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04454,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04455,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04456,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04457,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04458,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04459,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04460,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04461,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S04462,tarda: 10:30-12:30,0,1,fixada
 R1-TORN,S04526,tarda: 13:30-14:30,0,1,
-R1-TORN,S04534,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04535,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04536,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04537,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04538,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04539,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04540,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04541,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04542,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04543,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04544,tarda: 13:30-14:30,0,0,fixada
-R1-TORN,S04545,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04546,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04547,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04548,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04549,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04550,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04551,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04552,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04553,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04554,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04555,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04556,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04557,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04558,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04559,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04560,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04561,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04562,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04563,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04564,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04565,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04566,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04567,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04568,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04569,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04570,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04571,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04572,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04573,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04574,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04575,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04576,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04577,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04578,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04579,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04580,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04581,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04582,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04583,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04584,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04585,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04586,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04587,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04588,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04589,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04590,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04591,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04592,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04593,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04594,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04595,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04596,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04597,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04598,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04599,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04600,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04601,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04602,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04603,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04604,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04829,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04830,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04831,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04832,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04833,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04834,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04841,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04842,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04843,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04844,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04845,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04846,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S04847,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S04848,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S04849,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S04850,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S04851,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S04852,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S04911,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04912,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04913,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04914,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04915,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04916,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04917,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04918,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04919,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04920,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04921,tarda: 08:30-09:30,0,0,fixada
-R1-TORN,S04922,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04923,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04924,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04925,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04926,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04927,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04928,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04929,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04930,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04931,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04932,tarda: 09:30-10:30,0,0,fixada
-R1-TORN,S04933,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04934,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04935,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04936,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04937,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04938,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04939,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04940,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04941,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04942,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04943,tarda: 10:30-11:30,0,0,fixada
-R1-TORN,S04944,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04945,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04946,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04947,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04948,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04949,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04950,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04951,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04952,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04953,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04954,tarda: 11:30-12:30,0,0,fixada
-R1-TORN,S04955,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04956,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04957,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04958,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04959,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04960,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04961,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04962,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04963,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04964,tarda: 12:30-13:30,0,0,fixada
-R1-TORN,S04965,tarda: 12:30-13:30,0,0,fixada
+R1-TORN,S04534,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04535,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04536,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04537,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04538,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04539,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04540,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04541,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04542,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04543,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04544,tarda: 13:30-14:30,0,1,fixada
+R1-TORN,S04545,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04546,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04547,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04548,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04549,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04550,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04551,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04552,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04553,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04554,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04555,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04556,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04557,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04558,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04559,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04560,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04561,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04562,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04563,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04564,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04565,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04566,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04567,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04568,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04569,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04570,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04571,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04572,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04573,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04574,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04575,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04576,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04577,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04578,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04579,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04580,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04581,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04582,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04583,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04584,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04585,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04586,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04587,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04588,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04589,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04590,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04591,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04592,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04593,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04594,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04595,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04596,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04597,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04598,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04599,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04600,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04601,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04602,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04603,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04604,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04829,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04830,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04831,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04832,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04833,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04834,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04841,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04842,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04843,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04844,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04845,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04846,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S04847,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S04848,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S04849,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S04850,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S04851,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S04852,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S04911,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04912,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04913,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04914,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04915,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04916,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04917,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04918,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04919,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04920,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04921,tarda: 08:30-09:30,0,1,fixada
+R1-TORN,S04922,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04923,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04924,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04925,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04926,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04927,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04928,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04929,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04930,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04931,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04932,tarda: 09:30-10:30,0,1,fixada
+R1-TORN,S04933,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04934,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04935,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04936,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04937,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04938,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04939,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04940,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04941,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04942,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04943,tarda: 10:30-11:30,0,1,fixada
+R1-TORN,S04944,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04945,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04946,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04947,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04948,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04949,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04950,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04951,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04952,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04953,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04954,tarda: 11:30-12:30,0,1,fixada
+R1-TORN,S04955,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04956,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04957,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04958,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04959,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04960,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04961,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04962,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04963,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04964,tarda: 12:30-13:30,0,1,fixada
+R1-TORN,S04965,tarda: 12:30-13:30,0,1,fixada
 R1-TORN,S06049,mati: 18:00-19:00,0,1,
 R1-TORN,S06050,mati: 18:00-19:00,0,1,
 R1-TORN,S06051,mati: 18:00-19:00,0,1,
@@ -393,30 +391,30 @@ R1-TORN,S06073,mati: 17:00-18:00,0,1,
 R1-TORN,S06074,mati: 17:00-18:00,0,1,
 R1-TORN,S06075,mati: 17:00-18:00,0,1,
 R1-TORN,S06076,mati: 17:00-18:00,0,1,
-R1-TORN,S06101,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06102,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06103,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06104,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06105,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06106,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06107,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06108,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06109,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06110,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06111,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06112,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06137,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06138,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06139,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06140,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06141,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06142,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06143,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S06144,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S06145,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S06146,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S06147,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S06148,mati: 19:00-21:00,0,0,fixada
+R1-TORN,S06101,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06102,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06103,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06104,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06105,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06106,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06107,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06108,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06109,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06110,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06111,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06112,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06137,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06138,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06139,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06140,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06141,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06142,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06143,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S06144,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S06145,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S06146,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S06147,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S06148,mati: 19:00-21:00,0,1,fixada
 R1-TORN,S06185,mati: 15:00-17:00,0,1,
 R1-TORN,S06186,mati: 15:00-17:00,0,1,
 R1-TORN,S06187,mati: 15:00-17:00,0,1,
@@ -489,46 +487,46 @@ R1-TORN,S06321,mati: 17:00-18:00,0,1,
 R1-TORN,S06322,mati: 17:00-18:00,0,1,
 R1-TORN,S06323,mati: 17:00-18:00,0,1,
 R1-TORN,S06324,mati: 17:00-18:00,0,1,
-R1-TORN,S06331,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06332,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06333,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06334,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06335,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06336,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06337,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06338,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06339,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06340,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06341,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06342,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06364,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06365,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06366,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06367,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06368,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06369,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06370,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06392,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S06393,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S06394,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S06395,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S06396,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S06397,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S06398,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S06406,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06407,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06408,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06409,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06410,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06411,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06412,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S06413,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06414,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06415,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06416,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06417,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06418,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S06419,mati: 15:00-17:00,0,0,fixada
+R1-TORN,S06331,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06332,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06333,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06334,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06335,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06336,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06337,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06338,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06339,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06340,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06341,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06342,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06364,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06365,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06366,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06367,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06368,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06369,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06370,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06392,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S06393,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S06394,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S06395,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S06396,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S06397,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S06398,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S06406,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06407,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06408,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06409,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06410,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06411,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06412,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S06413,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06414,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06415,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06416,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06417,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06418,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S06419,mati: 15:00-17:00,0,1,fixada
 R1-TORN,S06446,mati: 15:00-17:00,0,1,
 R1-TORN,S06447,mati: 15:00-17:00,0,1,
 R1-TORN,S06448,mati: 15:00-17:00,0,1,
@@ -569,7 +567,6 @@ R1-TORN,S06523,mati: 15:00-17:00,0,1,
 R1-TORN,S06524,mati: 15:00-17:00,0,1,
 R1-TORN,S06525,mati: 15:00-17:00,0,1,
 R1-TORN,S06526,mati: 15:00-17:00,0,1,
-R1-FIXADA,S06575,L 12:30 Q3/0013 -> L 12:30 Q3/0003,0,1,
 R1-TORN,S06583,mati: 17:00-18:00,0,1,
 R1-TORN,S06584,mati: 17:00-18:00,0,1,
 R1-TORN,S06585,mati: 17:00-18:00,0,1,
@@ -612,8 +609,6 @@ R1-TORN,S06621,mati: 17:00-18:00,0,1,
 R1-TORN,S06622,mati: 17:00-18:00,0,1,
 R1-TORN,S06623,mati: 17:00-18:00,0,1,
 R1-TORN,S06624,mati: 17:00-18:00,0,1,
-R1-FIXADA,S06630,X 08:30 Q1/1003 -> X 08:30 Q1/1011,0,1,
-R1-FIXADA,S06644,X 10:30 Q1/1003 -> X 10:30 Q1/1011,0,1,
 R1-TORN,S06653,mati: 15:00-17:00,0,1,
 R1-TORN,S06654,mati: 15:00-17:00,0,1,
 R1-TORN,S06655,mati: 15:00-17:00,0,1,
@@ -642,7 +637,6 @@ R1-TORN,S06677,mati: 17:00-19:00,0,1,
 R1-TORN,S06678,mati: 17:00-19:00,0,1,
 R1-TORN,S06679,mati: 17:00-19:00,0,1,
 R1-TORN,S06680,mati: 17:00-19:00,0,1,
-R1-FIXADA,S06971,V 08:30 Q3/0013 -> V 08:30 Q3/0003,0,1,
 R1-TORN,S07025,mati: 18:00-19:00,0,1,
 R1-TORN,S07026,mati: 18:00-19:00,0,1,
 R1-TORN,S07027,mati: 18:00-19:00,0,1,
@@ -673,28 +667,28 @@ R1-TORN,S07051,mati: 17:00-18:00,0,1,
 R1-TORN,S07052,mati: 17:00-18:00,0,1,
 R1-TORN,S07053,mati: 17:00-18:00,0,1,
 R1-TORN,S07054,mati: 17:00-18:00,0,1,
-R1-TORN,S07076,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S07077,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S07078,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S07079,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S07080,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S07081,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S07082,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S07083,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S07084,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S07085,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S07108,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S07109,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S07110,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S07111,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S07112,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S07113,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S07132,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S07133,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S07134,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S07135,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S07136,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S07137,mati: 17:00-19:00,0,0,fixada
+R1-TORN,S07076,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S07077,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S07078,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S07079,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S07080,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S07081,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S07082,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S07083,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S07084,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S07085,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S07108,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S07109,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S07110,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S07111,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S07112,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S07113,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S07132,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S07133,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S07134,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S07135,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S07136,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S07137,mati: 17:00-19:00,0,1,fixada
 R1-TORN,S07166,mati: 15:00-17:00,0,1,
 R1-TORN,S07167,mati: 15:00-17:00,0,1,
 R1-TORN,S07168,mati: 15:00-17:00,0,1,
@@ -723,176 +717,176 @@ R1-TORN,S07190,mati: 15:00-17:00,0,1,
 R1-TORN,S07191,mati: 15:00-17:00,0,1,
 R1-TORN,S07192,mati: 15:00-17:00,0,1,
 R1-TORN,S07193,mati: 15:00-17:00,0,1,
-R1-TORN,S07285,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07286,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07287,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07288,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07289,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07290,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07291,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07292,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07293,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07294,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07295,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07296,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07297,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07298,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07299,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07300,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07301,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07302,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07303,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07304,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07305,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07306,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07307,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07308,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07309,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07310,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07311,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07312,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07422,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07423,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07424,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07425,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07426,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07427,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07428,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07429,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07430,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07431,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07432,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07433,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07434,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07435,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07436,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07437,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07438,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07439,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07591,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07592,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07593,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07594,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07595,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07596,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07597,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07598,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07599,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07600,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07601,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07602,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07603,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07604,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07605,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07606,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07607,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07608,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07655,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07656,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07657,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07658,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07659,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07660,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07667,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07668,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07669,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07670,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07671,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07672,tarda: 08:30-10:30,0,0,fixada
-R1-TORN,S07673,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07674,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07675,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07676,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07677,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07678,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07833,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07834,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07835,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07836,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07837,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07838,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07839,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07840,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07841,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07842,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07843,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07844,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07845,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07846,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07847,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07848,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07915,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07916,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07917,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07918,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07919,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07920,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07963,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07964,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07965,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07966,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07967,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07968,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S07969,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07970,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07971,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07972,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07973,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S07974,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08075,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08076,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08077,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08078,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08079,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08080,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08081,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08082,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08083,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08084,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08085,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08086,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08087,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08088,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08089,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08135,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08136,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08137,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08138,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08139,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08140,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08141,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08142,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08143,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08144,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08145,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08146,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08147,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08148,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08149,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08150,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08151,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08152,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08153,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08154,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08155,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08156,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08157,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08158,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08159,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08160,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08161,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08162,tarda: 10:30-12:30,0,0,fixada
-R1-TORN,S08204,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08205,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08206,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08207,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08208,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08209,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08210,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08211,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08212,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08213,tarda: 12:30-14:30,0,0,fixada
-R1-TORN,S08214,tarda: 12:30-14:30,0,0,fixada
+R1-TORN,S07285,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07286,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07287,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07288,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07289,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07290,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07291,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07292,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07293,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07294,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07295,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07296,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07297,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07298,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07299,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07300,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07301,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07302,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07303,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07304,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07305,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07306,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07307,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07308,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07309,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07310,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07311,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07312,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07422,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07423,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07424,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07425,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07426,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07427,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07428,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07429,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07430,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07431,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07432,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07433,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07434,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07435,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07436,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07437,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07438,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07439,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07591,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07592,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07593,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07594,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07595,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07596,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07597,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07598,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07599,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07600,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07601,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07602,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07603,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07604,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07605,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07606,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07607,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07608,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07655,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07656,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07657,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07658,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07659,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07660,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07667,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07668,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07669,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07670,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07671,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07672,tarda: 08:30-10:30,0,1,fixada
+R1-TORN,S07673,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07674,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07675,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07676,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07677,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07678,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07833,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07834,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07835,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07836,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07837,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07838,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07839,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07840,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07841,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07842,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07843,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07844,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07845,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07846,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07847,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07848,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07915,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07916,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07917,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07918,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07919,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07920,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07963,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07964,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07965,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07966,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07967,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07968,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S07969,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07970,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07971,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07972,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07973,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S07974,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08075,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08076,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08077,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08078,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08079,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08080,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08081,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08082,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08083,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08084,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08085,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08086,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08087,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08088,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08089,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08135,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08136,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08137,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08138,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08139,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08140,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08141,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08142,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08143,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08144,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08145,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08146,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08147,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08148,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08149,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08150,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08151,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08152,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08153,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08154,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08155,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08156,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08157,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08158,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08159,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08160,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08161,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08162,tarda: 10:30-12:30,0,1,fixada
+R1-TORN,S08204,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08205,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08206,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08207,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08208,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08209,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08210,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08211,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08212,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08213,tarda: 12:30-14:30,0,1,fixada
+R1-TORN,S08214,tarda: 12:30-14:30,0,1,fixada
 R1-TORN,S14346,mati: 15:00-16:00,0,1,
 R1-TORN,S14347,mati: 15:00-16:00,0,1,
 R1-TORN,S14348,mati: 15:00-16:00,0,1,
@@ -919,32 +913,32 @@ R1-TORN,S14368,mati: 15:00-16:00,0,1,
 R1-TORN,S14369,mati: 15:00-16:00,0,1,
 R1-TORN,S14370,mati: 15:00-16:00,0,1,
 R1-TORN,S14371,mati: 15:00-16:00,0,1,
-R1-TORN,S14386,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14387,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14388,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14389,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14390,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14391,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14392,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14420,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S14421,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S14422,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S14423,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S14424,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S14425,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S14426,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14427,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14428,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14429,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14430,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14431,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14439,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S14440,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S14441,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S14442,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S14443,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S14444,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S14445,mati: 17:00-19:00,0,0,fixada
+R1-TORN,S14386,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14387,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14388,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14389,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14390,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14391,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14392,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14420,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S14421,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S14422,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S14423,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S14424,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S14425,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S14426,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14427,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14428,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14429,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14430,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14431,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14439,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S14440,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S14441,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S14442,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S14443,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S14444,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S14445,mati: 17:00-19:00,0,1,fixada
 R1-TORN,S14474,mati: 15:00-17:00,0,1,
 R1-TORN,S14475,mati: 15:00-17:00,0,1,
 R1-TORN,S14476,mati: 15:00-17:00,0,1,
@@ -985,147 +979,145 @@ R1-TORN,S14846,mati: 15:00-17:00,0,1,
 R1-TORN,S14847,mati: 18:00-19:00,0,1,
 R1-TORN,S14848,mati: 15:00-17:00,0,1,
 R1-TORN,S14849,mati: 18:00-19:00,0,1,
-R1-TORN,S14868,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14869,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14870,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14871,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14872,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14873,mati: 18:00-20:00,0,0,fixada
-R1-TORN,S14880,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14881,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14882,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14883,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14884,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14885,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14886,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14887,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14888,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14889,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14890,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14891,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14904,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14905,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14906,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14907,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14908,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S14909,mati: 19:00-21:00,0,0,fixada
-R1-TORN,S15052,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15053,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15054,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15055,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15056,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15057,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15058,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15059,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15060,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15061,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15062,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15063,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15064,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15065,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15066,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15067,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15068,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15069,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15070,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15071,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15072,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15073,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15074,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15075,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15076,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15077,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15078,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15079,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15080,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15081,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15082,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15083,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15084,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15085,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15086,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15087,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15088,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15089,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15090,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15091,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15092,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15093,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15094,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15095,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15096,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15097,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15098,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15099,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15100,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15101,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15102,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15103,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15104,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15105,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15106,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15107,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15108,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15109,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15110,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15111,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15112,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15113,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15114,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15115,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15116,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15117,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15118,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15119,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15120,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15121,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15122,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15123,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15124,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15125,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15126,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15127,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15128,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15129,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15130,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15131,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15132,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15133,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15134,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15135,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15136,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15137,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15138,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15139,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15140,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15141,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15142,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15143,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15144,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15145,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15146,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15147,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15148,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15149,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15150,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15151,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15152,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15153,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15154,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15155,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15156,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15157,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15158,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15159,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15160,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15161,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15162,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15163,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15164,mati: 17:00-19:00,0,0,fixada
-R1-TORN,S15165,mati: 15:00-17:00,0,0,fixada
-R1-TORN,S15166,mati: 17:00-19:00,0,0,fixada
-R1-FIXADA,S15262,M 10:30 Q3/0013 -> M 10:30 Q3/0003,0,1,
-R1-FIXADA,S15288,M 12:30 Q3/0013 -> M 12:30 Q3/0003,0,1,
+R1-TORN,S14868,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14869,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14870,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14871,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14872,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14873,mati: 18:00-20:00,0,1,fixada
+R1-TORN,S14880,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14881,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14882,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14883,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14884,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14885,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14886,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14887,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14888,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14889,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14890,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14891,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14904,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14905,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14906,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14907,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14908,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S14909,mati: 19:00-21:00,0,1,fixada
+R1-TORN,S15052,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15053,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15054,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15055,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15056,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15057,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15058,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15059,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15060,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15061,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15062,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15063,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15064,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15065,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15066,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15067,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15068,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15069,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15070,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15071,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15072,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15073,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15074,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15075,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15076,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15077,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15078,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15079,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15080,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15081,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15082,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15083,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15084,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15085,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15086,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15087,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15088,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15089,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15090,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15091,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15092,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15093,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15094,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15095,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15096,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15097,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15098,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15099,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15100,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15101,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15102,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15103,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15104,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15105,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15106,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15107,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15108,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15109,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15110,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15111,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15112,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15113,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15114,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15115,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15116,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15117,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15118,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15119,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15120,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15121,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15122,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15123,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15124,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15125,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15126,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15127,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15128,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15129,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15130,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15131,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15132,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15133,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15134,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15135,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15136,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15137,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15138,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15139,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15140,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15141,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15142,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15143,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15144,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15145,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15146,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15147,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15148,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15149,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15150,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15151,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15152,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15153,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15154,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15155,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15156,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15157,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15158,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15159,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15160,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15161,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15162,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15163,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15164,mati: 17:00-19:00,0,1,fixada
+R1-TORN,S15165,mati: 15:00-17:00,0,1,fixada
+R1-TORN,S15166,mati: 17:00-19:00,0,1,fixada
 R1-TORN,S15328,mati: 17:00-19:00,0,1,
 R1-TORN,S15329,mati: 16:00-18:00,0,1,
 R1-TORN,S15330,mati: 17:00-19:00,0,1,
@@ -1153,102 +1145,100 @@ R1-TORN,S15351,mati: 17:00-19:00,0,1,
 R1-TORN,S15352,mati: 16:00-18:00,0,1,
 R1-TORN,S15353,mati: 17:00-19:00,0,1,
 R1-TORN,S15354,mati: 16:00-18:00,0,1,
-R1-TORN,S15870,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15871,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15872,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15873,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15874,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15875,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15876,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15877,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15878,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15879,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15880,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15881,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15882,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15883,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S15975,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15976,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15977,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15978,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15979,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15980,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15981,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15982,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15983,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15984,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15985,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15986,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15987,mati: 15:00-16:00,0,0,fixada
-R1-TORN,S15988,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15989,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15990,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15991,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15992,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15993,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15994,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15995,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15996,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15997,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15998,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S15999,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S16000,mati: 16:00-17:00,0,0,fixada
-R1-TORN,S16284,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16285,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16286,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16287,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16288,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16289,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16290,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16291,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16292,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16293,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16294,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16295,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16296,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16297,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16298,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16299,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16300,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16301,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16302,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16303,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16304,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16305,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16306,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16307,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16308,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16309,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16310,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16311,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16312,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16313,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16314,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16315,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16316,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16317,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16318,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16319,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16320,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16321,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16322,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16323,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16324,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16325,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16326,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16327,mati: 17:00-18:00,0,0,fixada
-R1-TORN,S16328,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16329,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16330,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16331,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16332,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16333,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16334,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16335,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16336,mati: 18:00-19:00,0,0,fixada
-R1-TORN,S16337,mati: 18:00-19:00,0,0,fixada
-R7-PLAB,S16858,X 17:00 Q3/0013 -> X 17:00 Q3/0003,0,1,
-R7-PLAB,S16879,X 15:00 Q3/0013 -> X 15:00 Q3/0003,0,1,
+R1-TORN,S15870,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15871,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15872,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15873,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15874,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15875,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15876,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15877,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15878,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15879,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15880,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15881,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15882,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15883,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S15975,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15976,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15977,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15978,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15979,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15980,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15981,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15982,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15983,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15984,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15985,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15986,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15987,mati: 15:00-16:00,0,1,fixada
+R1-TORN,S15988,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15989,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15990,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15991,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15992,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15993,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15994,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15995,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15996,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15997,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15998,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S15999,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S16000,mati: 16:00-17:00,0,1,fixada
+R1-TORN,S16284,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16285,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16286,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16287,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16288,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16289,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16290,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16291,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16292,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16293,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16294,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16295,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16296,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16297,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16298,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16299,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16300,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16301,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16302,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16303,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16304,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16305,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16306,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16307,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16308,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16309,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16310,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16311,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16312,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16313,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16314,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16315,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16316,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16317,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16318,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16319,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16320,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16321,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16322,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16323,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16324,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16325,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16326,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16327,mati: 17:00-18:00,0,1,fixada
+R1-TORN,S16328,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16329,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16330,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16331,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16332,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16333,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16334,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16335,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16336,mati: 18:00-19:00,0,1,fixada
+R1-TORN,S16337,mati: 18:00-19:00,0,1,fixada
 R3-AFORAMENT,S03954,50 alumnes a Q3/0009 (48),0,0,fixada
 R3-AFORAMENT,S03955,50 alumnes a Q3/0009 (48),0,0,fixada
 R3-AFORAMENT,S03956,50 alumnes a Q3/0009 (48),0,0,fixada
@@ -1270,6 +1260,7 @@ R3-AFORAMENT,S03971,50 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S03972,50 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S03973,50 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S03974,50 alumnes a Q3/0013 (48),0,0,fixada
+R3-AFORAMENT,S03975,50 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S03976,50 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S03977,50 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S03978,50 alumnes a Q3/0013 (48),0,0,fixada
@@ -1306,7 +1297,6 @@ R3-AFORAMENT,S14765,49 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S14767,49 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S14769,49 alumnes a Q3/0013 (48),0,0,fixada
 R3-AFORAMENT,S14771,49 alumnes a Q3/0013 (48),0,0,fixada
-R4-ALUMNAT,S16389|S16456,GIA:3r,0,0,partida
 R4-DOCENT,S00665|S00756,D033,0,0,partida
 R4-DOCENT,S00665|S14746,D033,0,0,partida
 R4-DOCENT,S00756|S14746,D033,0,0,partida
@@ -1333,8 +1323,6 @@ R4-DOCENT,S16350|S16363,D165,0,0,partida
 R4-ALUMNAT,S16350|S16363,GIA:3r,0,0,partida
 R4-PLAB,S16350|S16363,108271 2027-02-04 16:00,0,0,partida
 R4-PLAB,S16350|S16376,108271 2027-02-04 16:00,0,0,partida
-R4-ALUMNAT,S16350|S16470,GIA:3r,0,0,partida
-R4-ALUMNAT,S16363|S16470,GIA:3r,0,0,partida
 R4-DOCENT,S05511|S10108,D219,0,0,partida
 R4-DOCENT,S05511|S10123,D219,0,0,partida
 R4-DOCENT,S14209|S14224,D323,0,0,partida
@@ -1342,8 +1330,6 @@ R4-DOCENT,S06185|S06200,D217,0,0,partida
 R4-DOCENT,S06185|S06200,D242,0,0,partida
 R4-DOCENT,S06185|S06200,D384,0,0,partida
 R4-ALUMNAT,S04028|S06077,GEI:2n,0,0,fixada
-R4-DOCENT,S04405|S16864,D246,0,0,partida
-R4-ALUMNAT,S16390|S16457,GIA:3r,0,0,partida
 R4-PLAB,S04076|S04131,102746 2027-02-09 08:30,0,0,partida
 R4-DOCENT,S00667|S00758,D033,0,0,partida
 R4-DOCENT,S00667|S14748,D033,0,0,partida
@@ -1376,8 +1362,6 @@ R4-DOCENT,S16351|S16364,D165,0,0,partida
 R4-ALUMNAT,S16351|S16364,GIA:3r,0,0,partida
 R4-PLAB,S16351|S16364,108271 2027-02-11 16:00,0,0,partida
 R4-PLAB,S16351|S16377,108271 2027-02-11 16:00,0,0,partida
-R4-ALUMNAT,S16351|S16471,GIA:3r,0,0,partida
-R4-ALUMNAT,S16364|S16471,GIA:3r,0,0,partida
 R4-ALUMNAT,S04841|S07667,GEI:3r|GEI:4t,0,0,fixada
 R4-DOCENT,S05513|S10109,D219,0,0,partida
 R4-DOCENT,S05513|S10124,D219,0,0,partida
@@ -1392,8 +1376,6 @@ R4-ALUMNAT,S14372|S14850,GEI:1r,0,0,fixada
 R4-ALUMNAT,S14448|S14850,GEI:1r,0,0,fixada
 R4-PLAB,S14379|S14462,107887 2027-02-15 11:30,0,0,fixada
 R4-ALUMNAT,S14379|S14856,GEI:1r,0,0,fixada
-R4-DOCENT,S04406|S16865,D246,0,0,partida
-R4-ALUMNAT,S16391|S16458,GIA:3r,0,0,partida
 R4-PLAB,S04070|S04132,102746 2027-02-16 08:30,0,0,partida
 R4-PLAB,S14723|S14874,107889 2027-02-16 08:30,0,0,fixada
 R4-ALUMNAT,S04119|S07061,GEI:2n,0,0,fixada
@@ -1434,8 +1416,6 @@ R4-DOCENT,S16352|S16365,D165,0,0,partida
 R4-ALUMNAT,S16352|S16365,GIA:3r,0,0,partida
 R4-PLAB,S16352|S16365,108271 2027-02-18 16:00,0,0,partida
 R4-PLAB,S16352|S16378,108271 2027-02-18 16:00,0,0,partida
-R4-ALUMNAT,S16352|S16472,GIA:3r,0,0,partida
-R4-ALUMNAT,S16365|S16472,GIA:3r,0,0,partida
 R4-DOCENT,S05515|S10110,D219,0,0,partida
 R4-DOCENT,S05515|S10125,D219,0,0,partida
 R4-DOCENT,S07422|S07428,D196,0,0,fixada
@@ -1450,8 +1430,6 @@ R4-ALUMNAT,S04029|S06078,GEI:2n,0,0,fixada
 R4-ALUMNAT,S14373|S14449,GEI:1r,0,0,fixada
 R4-PLAB,S14373|S14449,107887 2027-02-22 08:30,0,0,fixada
 R4-PLAB,S14380|S14463,107887 2027-02-22 11:30,0,0,fixada
-R4-DOCENT,S04407|S16866,D246,0,0,partida
-R4-ALUMNAT,S16392|S16459,GIA:3r,0,0,partida
 R4-PLAB,S04077|S04133,102746 2027-02-23 08:30,0,0,partida
 R4-DOCENT,S00671|S00762,D033,0,0,partida
 R4-DOCENT,S00671|S14752,D033,0,0,partida
@@ -1488,8 +1466,6 @@ R4-DOCENT,S16353|S16366,D165,0,0,partida
 R4-ALUMNAT,S16353|S16366,GIA:3r,0,0,partida
 R4-PLAB,S16353|S16366,108271 2027-02-25 16:00,0,0,partida
 R4-PLAB,S16353|S16379,108271 2027-02-25 16:00,0,0,partida
-R4-ALUMNAT,S16353|S16473,GIA:3r,0,0,partida
-R4-ALUMNAT,S16366|S16473,GIA:3r,0,0,partida
 R4-ALUMNAT,S04842|S07668,GEI:3r|GEI:4t,0,0,fixada
 R4-DOCENT,S05517|S10111,D219,0,0,partida
 R4-DOCENT,S05517|S10126,D219,0,0,partida
@@ -1504,8 +1480,6 @@ R4-ALUMNAT,S14374|S14851,GEI:1r,0,0,fixada
 R4-ALUMNAT,S14450|S14851,GEI:1r,0,0,fixada
 R4-PLAB,S14381|S14464,107887 2027-03-01 11:30,0,0,fixada
 R4-ALUMNAT,S14381|S14857,GEI:1r,0,0,fixada
-R4-DOCENT,S04408|S16867,D246,0,0,partida
-R4-ALUMNAT,S16393|S16460,GIA:3r,0,0,partida
 R4-PLAB,S04071|S04134,102746 2027-03-02 08:30,0,0,partida
 R4-PLAB,S14727|S14875,107889 2027-03-02 08:30,0,0,fixada
 R4-ALUMNAT,S04121|S07062,GEI:2n,0,0,fixada
@@ -1528,7 +1502,6 @@ R4-PLAB,S07093|S07142,102775 2027-03-03 10:30,0,0,fixada
 R4-DOCENT,S05461|S09376,D261,0,0,partida
 R4-ALUMNAT,S06378|S07099,GEI:2n,0,0,fixada
 R4-ALUMNAT,S06385|S07104,GEI:2n,0,0,fixada
-R4-ALUMNAT,S09241|S11583,GEQ:2n,0,0,partida
 R4-DOCENT,S07170|S07184,D082,0,0,partida
 R4-DOCENT,S07170|S07198,D082,0,0,partida
 R4-DOCENT,S07170|S07198,D305,0,0,partida
@@ -1556,8 +1529,6 @@ R4-DOCENT,S16354|S16367,D165,0,0,partida
 R4-ALUMNAT,S16354|S16367,GIA:3r,0,0,partida
 R4-PLAB,S16354|S16367,108271 2027-03-04 16:00,0,0,partida
 R4-PLAB,S16354|S16380,108271 2027-03-04 16:00,0,0,partida
-R4-ALUMNAT,S16354|S16474,GIA:3r,0,0,partida
-R4-ALUMNAT,S16367|S16474,GIA:3r,0,0,partida
 R4-DOCENT,S05519|S10112,D219,0,0,partida
 R4-DOCENT,S05519|S10127,D219,0,0,partida
 R4-DOCENT,S07423|S07429,D196,0,0,fixada
@@ -1572,8 +1543,6 @@ R4-ALUMNAT,S06079|S06326,GEI:2n,0,0,fixada
 R4-ALUMNAT,S14375|S14451,GEI:1r,0,0,fixada
 R4-PLAB,S14375|S14451,107887 2027-03-08 08:30,0,0,fixada
 R4-PLAB,S14382|S14465,107887 2027-03-08 11:30,0,0,fixada
-R4-DOCENT,S04409|S16868,D246,0,0,partida
-R4-ALUMNAT,S16394|S16461,GIA:3r,0,0,partida
 R4-PLAB,S04078|S04135,102746 2027-03-09 08:30,0,0,partida
 R4-DOCENT,S00675|S00766,D033,0,0,partida
 R4-DOCENT,S00675|S14756,D033,0,0,partida
@@ -1619,8 +1588,6 @@ R4-DOCENT,S16355|S16368,D165,0,0,partida
 R4-ALUMNAT,S16355|S16368,GIA:3r,0,0,partida
 R4-PLAB,S16355|S16368,108271 2027-03-11 16:00,0,0,partida
 R4-PLAB,S16355|S16381,108271 2027-03-11 16:00,0,0,partida
-R4-ALUMNAT,S16355|S16475,GIA:3r,0,0,partida
-R4-ALUMNAT,S16368|S16475,GIA:3r,0,0,partida
 R4-ALUMNAT,S04843|S07669,GEI:3r|GEI:4t,0,0,fixada
 R4-DOCENT,S05521|S10113,D219,0,0,partida
 R4-DOCENT,S05521|S10128,D219,0,0,partida
@@ -1631,8 +1598,6 @@ R4-DOCENT,S06190|S06205,D217,0,0,partida
 R4-DOCENT,S06190|S06205,D242,0,0,partida
 R4-DOCENT,S06190|S06205,D384,0,0,partida
 R4-ALUMNAT,S14452|S14852,GEI:1r,0,0,fixada
-R4-DOCENT,S04410|S16869,D246,0,0,partida
-R4-ALUMNAT,S16395|S16462,GIA:3r,0,0,partida
 R4-PLAB,S04072|S04136,102746 2027-03-16 08:30,0,0,partida
 R4-PLAB,S14731|S14876,107889 2027-03-16 08:30,0,0,fixada
 R4-ALUMNAT,S04123|S07063,GEI:2n,0,0,fixada
@@ -1650,7 +1615,6 @@ R4-DOCENT,S07172|S07186,D082,0,0,partida
 R4-DOCENT,S07172|S07200,D082,0,0,partida
 R4-DOCENT,S07172|S07200,D305,0,0,partida
 R4-DOCENT,S07186|S07200,D082,0,0,partida
-R4-DOCENT,S09132|S09215,D193,0,0,partida
 R4-DOCENT,S06673|S06687,D181,0,0,partida
 R4-DOCENT,S05522|S10114,D219,0,0,partida
 R4-DOCENT,S05522|S10129,D219,0,0,partida
@@ -1660,7 +1624,6 @@ R4-DOCENT,S14215|S14230,D323,0,0,partida
 R4-DOCENT,S06191|S06206,D217,0,0,partida
 R4-DOCENT,S06191|S06206,D242,0,0,partida
 R4-DOCENT,S06191|S06206,D384,0,0,partida
-R4-ALUMNAT,S11212|S11744,GEQ:1r,0,0,partida
 R4-DOCENT,S09175|S09230,D167,0,0,partida
 R4-DOCENT,S05523|S10115,D219,0,0,partida
 R4-DOCENT,S05523|S10130,D219,0,0,partida
@@ -1669,8 +1632,6 @@ R4-DOCENT,S06192|S06207,D217,0,0,partida
 R4-DOCENT,S06192|S06207,D242,0,0,partida
 R4-DOCENT,S06192|S06207,D384,0,0,partida
 R4-ALUMNAT,S04031|S06080,GEI:2n,0,0,fixada
-R4-DOCENT,S04411|S16871,D246,0,0,partida
-R4-ALUMNAT,S16396|S16463,GIA:3r,0,0,partida
 R4-PLAB,S04079|S04137,102746 2027-04-13 08:30,0,0,partida
 R4-DOCENT,S00678|S00769,D033,0,0,partida
 R4-DOCENT,S00678|S14759,D033,0,0,partida
@@ -1703,25 +1664,19 @@ R4-DOCENT,S16356|S16369,D165,0,0,partida
 R4-ALUMNAT,S16356|S16369,GIA:3r,0,0,partida
 R4-PLAB,S16356|S16369,108271 2027-04-15 16:00,0,0,partida
 R4-PLAB,S16356|S16382,108271 2027-04-15 16:00,0,0,partida
-R4-ALUMNAT,S16356|S16478,GIA:3r,0,0,partida
-R4-ALUMNAT,S16369|S16478,GIA:3r,0,0,partida
 R4-ALUMNAT,S04844|S07670,GEI:3r|GEI:4t,0,0,fixada
 R4-DOCENT,S05525|S10116,D219,0,0,partida
 R4-DOCENT,S05525|S10131,D219,0,0,partida
 R4-DOCENT,S07917|S07920,D122,0,0,fixada
 R4-ALUMNAT,S04850|S07676,GEI:3r|GEI:4t,0,0,fixada
-R4-DOCENT,S09247|S09692,D322,0,0,partida
 R4-DOCENT,S09264|S09692,D322,0,0,partida
 R4-DOCENT,S14217|S14232,D323,0,0,partida
 R4-DOCENT,S06193|S06208,D217,0,0,partida
 R4-DOCENT,S06193|S06208,D242,0,0,partida
 R4-DOCENT,S06193|S06208,D384,0,0,partida
-R4-ALUMNAT,S16554|S16631,MEBA:M,0,0,partida
 R4-ALUMNAT,S14376|S14454,GEI:1r,0,0,fixada
 R4-PLAB,S14376|S14454,107887 2027-04-19 08:30,0,0,fixada
 R4-PLAB,S14383|S14468,107887 2027-04-19 11:30,0,0,fixada
-R4-DOCENT,S04412|S16872,D246,0,0,partida
-R4-ALUMNAT,S16397|S16464,GIA:3r,0,0,partida
 R4-PLAB,S04073|S04138,102746 2027-04-20 08:30,0,0,partida
 R4-PLAB,S14734|S14877,107889 2027-04-20 08:30,0,0,fixada
 R4-DOCENT,S00680|S00771,D033,0,0,partida
@@ -1751,8 +1706,6 @@ R4-DOCENT,S16357|S16370,D165,0,0,partida
 R4-ALUMNAT,S16357|S16370,GIA:3r,0,0,partida
 R4-PLAB,S16357|S16370,108271 2027-04-22 16:00,0,0,partida
 R4-PLAB,S16357|S16383,108271 2027-04-22 16:00,0,0,partida
-R4-ALUMNAT,S16357|S16479,GIA:3r,0,0,partida
-R4-ALUMNAT,S16370|S16479,GIA:3r,0,0,partida
 R4-DOCENT,S05527|S10117,D219,0,0,partida
 R4-DOCENT,S05527|S10132,D219,0,0,partida
 R4-DOCENT,S07425|S07431,D196,0,0,fixada
@@ -1765,7 +1718,6 @@ R4-ALUMNAT,S04032|S06081,GEI:2n,0,0,fixada
 R4-ALUMNAT,S04032|S06327,GEI:2n,0,0,fixada
 R4-ALUMNAT,S06081|S06327,GEI:2n,0,0,fixada
 R4-ALUMNAT,S14455|S14853,GEI:1r,0,0,fixada
-R4-ALUMNAT,S16398|S16465,GIA:3r,0,0,partida
 R4-PLAB,S04080|S04139,102746 2027-04-27 08:30,0,0,partida
 R4-DOCENT,S00682|S00773,D033,0,0,partida
 R4-DOCENT,S00682|S14762,D033,0,0,partida
@@ -1806,8 +1758,6 @@ R4-DOCENT,S16358|S16371,D165,0,0,partida
 R4-ALUMNAT,S16358|S16371,GIA:3r,0,0,partida
 R4-PLAB,S16358|S16371,108271 2027-04-29 16:00,0,0,partida
 R4-PLAB,S16358|S16384,108271 2027-04-29 16:00,0,0,partida
-R4-ALUMNAT,S16358|S16480,GIA:3r,0,0,partida
-R4-ALUMNAT,S16371|S16480,GIA:3r,0,0,partida
 R4-ALUMNAT,S04845|S07671,GEI:3r|GEI:4t,0,0,fixada
 R4-DOCENT,S05529|S10118,D219,0,0,partida
 R4-DOCENT,S05529|S10133,D219,0,0,partida
@@ -1819,7 +1769,6 @@ R4-DOCENT,S06195|S06210,D384,0,0,partida
 R4-ALUMNAT,S14377|S14456,GEI:1r,0,0,fixada
 R4-PLAB,S14377|S14456,107887 2027-05-03 08:30,0,0,fixada
 R4-PLAB,S14384|S14470,107887 2027-05-03 11:30,0,0,fixada
-R4-ALUMNAT,S16399|S16466,GIA:3r,0,0,partida
 R4-PLAB,S04074|S04140,102746 2027-05-04 08:30,0,0,partida
 R4-PLAB,S14738|S14878,107889 2027-05-04 08:30,0,0,fixada
 R4-ALUMNAT,S04126|S07064,GEI:2n,0,0,fixada
@@ -1867,8 +1816,6 @@ R4-DOCENT,S16359|S16372,D165,0,0,partida
 R4-ALUMNAT,S16359|S16372,GIA:3r,0,0,partida
 R4-PLAB,S16359|S16372,108271 2027-05-06 16:00,0,0,partida
 R4-PLAB,S16359|S16385,108271 2027-05-06 16:00,0,0,partida
-R4-ALUMNAT,S16359|S16481,GIA:3r,0,0,partida
-R4-ALUMNAT,S16372|S16481,GIA:3r,0,0,partida
 R4-DOCENT,S05531|S10119,D219,0,0,partida
 R4-DOCENT,S05531|S10134,D219,0,0,partida
 R4-DOCENT,S07426|S07432,D196,0,0,fixada
@@ -1886,7 +1833,6 @@ R4-ALUMNAT,S14378|S14854,GEI:1r,0,0,fixada
 R4-ALUMNAT,S14457|S14854,GEI:1r,0,0,fixada
 R4-PLAB,S14385|S14471,107887 2027-05-10 11:30,0,0,fixada
 R4-ALUMNAT,S14385|S14860,GEI:1r,0,0,fixada
-R4-ALUMNAT,S16400|S16467,GIA:3r,0,0,partida
 R4-PLAB,S04081|S04141,102746 2027-05-11 08:30,0,0,partida
 R4-DOCENT,S00686|S00777,D033,0,0,partida
 R4-DOCENT,S00686|S14766,D033,0,0,partida
@@ -1927,13 +1873,10 @@ R4-DOCENT,S16360|S16373,D165,0,0,partida
 R4-ALUMNAT,S16360|S16373,GIA:3r,0,0,partida
 R4-PLAB,S16360|S16373,108271 2027-05-13 16:00,0,0,partida
 R4-PLAB,S16360|S16386,108271 2027-05-13 16:00,0,0,partida
-R4-ALUMNAT,S16360|S16482,GIA:3r,0,0,partida
-R4-ALUMNAT,S16373|S16482,GIA:3r,0,0,partida
 R4-ALUMNAT,S04846|S07672,GEI:3r|GEI:4t,0,0,fixada
 R4-DOCENT,S05533|S10120,D219,0,0,partida
 R4-DOCENT,S05533|S10135,D219,0,0,partida
 R4-ALUMNAT,S04852|S07678,GEI:3r|GEI:4t,0,0,fixada
-R4-DOCENT,S09252|S09696,D322,0,0,partida
 R4-DOCENT,S09269|S09696,D322,0,0,partida
 R4-DOCENT,S14221|S14236,D323,0,0,partida
 R4-DOCENT,S06197|S06212,D217,0,0,partida
@@ -1983,22 +1926,18 @@ R4-DOCENT,S16361|S16374,D165,0,0,partida
 R4-ALUMNAT,S16361|S16374,GIA:3r,0,0,partida
 R4-PLAB,S16361|S16374,108271 2027-05-20 16:00,0,0,partida
 R4-PLAB,S16361|S16387,108271 2027-05-20 16:00,0,0,partida
-R4-ALUMNAT,S16361|S16483,GIA:3r,0,0,partida
-R4-ALUMNAT,S16374|S16483,GIA:3r,0,0,partida
 R4-DOCENT,S05535|S10121,D219,0,0,partida
 R4-DOCENT,S05535|S10136,D219,0,0,partida
 R4-DOCENT,S07427|S07433,D196,0,0,fixada
 R4-DOCENT,S11235|S11241,D147,0,0,partida
 R4-DOCENT,S11235|S11241,D352,0,0,partida
 R4-DOCENT,S04110|S04116,D423,0,0,fixada
-R4-DOCENT,S09254|S09697,D322,0,0,partida
 R4-DOCENT,S09271|S09697,D322,0,0,partida
 R4-DOCENT,S14222|S14237,D323,0,0,partida
 R4-DOCENT,S06198|S06213,D217,0,0,partida
 R4-DOCENT,S06198|S06213,D242,0,0,partida
 R4-DOCENT,S06198|S06213,D384,0,0,partida
 R4-ALUMNAT,S14458|S14855,GEI:1r,0,0,fixada
-R4-ALUMNAT,S16401|S16468,GIA:3r,0,0,partida
 R4-PLAB,S14744|S14879,107889 2027-05-25 08:30,0,0,fixada
 R4-DOCENT,S00690|S00781,D033,0,0,partida
 R4-DOCENT,S00690|S14770,D033,0,0,partida
@@ -2034,12 +1973,9 @@ R4-DOCENT,S16362|S16375,D165,0,0,partida
 R4-ALUMNAT,S16362|S16375,GIA:3r,0,0,partida
 R4-PLAB,S16362|S16375,108271 2027-05-27 16:00,0,0,partida
 R4-PLAB,S16362|S16388,108271 2027-05-27 16:00,0,0,partida
-R4-ALUMNAT,S16362|S16484,GIA:3r,0,0,partida
-R4-ALUMNAT,S16375|S16484,GIA:3r,0,0,partida
 R4-DOCENT,S05537|S10122,D219,0,0,partida
 R4-DOCENT,S05537|S10137,D219,0,0,partida
 R4-DOCENT,S14223|S14238,D323,0,0,partida
 R4-DOCENT,S06199|S06214,D217,0,0,partida
 R4-DOCENT,S06199|S06214,D242,0,0,partida
 R4-DOCENT,S06199|S06214,D384,0,0,partida
-R4-ALUMNAT,S16402|S16469,GIA:3r,0,0,partida
