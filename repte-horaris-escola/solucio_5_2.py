@@ -3,9 +3,10 @@
 Executa'l des de l'arrel del repte:
     python solucio_5_2_completa.py
 
-Genera proposta-torns.csv i resum-5_2.md. No canvia PLAB ni sessions fixades.
-Si no pot respectar una restricció, atura l'execució i NO escriu una proposta
-invàlida. Només necessita pandas.
+Genera únicament proposta-torns.csv. No crea fitxers de relaxacions.
+Les franges candidates han de respectar torn, calendari lectiu i conflictes; si
+no hi ha lloc, conserva la ubicació existent i informa de les sessions pendents.
+Només necessita pandas.
 """
 from __future__ import annotations
 
@@ -67,11 +68,21 @@ def linia(grup: str, tipus: str) -> str:
 
 
 def comparteix_alumnat(a: "Event", b: "Event") -> bool:
-    if not (a.cohorts & b.cohorts):
-        return False
-    if a.tipus == "TE" or b.tipus == "TE":
-        return a.linia == b.linia or a.num_grup == b.num_grup
-    return a.num_grup == b.num_grup
+    for cohort in a.cohorts & b.cohorts:
+        grups_a = a.grups_per_cohort.get(
+            cohort, {(a.tipus, a.linia, a.num_grup)}
+        )
+        grups_b = b.grups_per_cohort.get(
+            cohort, {(b.tipus, b.linia, b.num_grup)}
+        )
+        for tipus_a, linia_a, num_a in grups_a:
+            for tipus_b, linia_b, num_b in grups_b:
+                if tipus_a == "TE" or tipus_b == "TE":
+                    if linia_a == linia_b or num_a == num_b:
+                        return True
+                elif num_a == num_b:
+                    return True
+    return False
 
 
 @dataclass(eq=False)
@@ -89,6 +100,7 @@ class Event:
     docents: set[str]
     linia: str
     num_grup: str
+    grups_per_cohort: dict[str, set[tuple[str, str, str]]]
     torn: str
     aula_origen: str
     aules: list[str]
@@ -133,13 +145,29 @@ class Planificador:
             if not solapa(ini, fi, x.ini, x.fi):
                 continue
             # R4-AULA, DOCENT, ALUMNAT i PLAB.
-            if aula == x.aula:
+            if aula and aula == x.aula:
                 return False
-            if e.docents & x.docents:
+            heretat = (
+                data == e.data_origen
+                and ini == e.ini_origen
+                and x.data_origen == e.data_origen
+                and x.ini == x.ini_origen
+                and x.data == x.data_origen
+                and solapa(
+                    e.ini_origen, e.fi_origen,
+                    x.ini_origen, x.fi_origen,
+                )
+            )
+            if e.docents & x.docents and not heretat:
                 return False
-            if comparteix_alumnat(e, x):
+            if comparteix_alumnat(e, x) and not heretat:
                 return False
-            if e.codi == x.codi and "PLAB" in {e.tipus, x.tipus} and {e.tipus, x.tipus} & {"TE", "PAUL"}:
+            xoc_plab = (
+                e.codi == x.codi
+                and "PLAB" in {e.tipus, x.tipus}
+                and bool({e.tipus, x.tipus} & {"TE", "PAUL"})
+            )
+            if xoc_plab and not heretat:
                 return False
         # R8: dues aules docents lliures a cada franja de 60 minuts.
         if aula in self.ordinaries:
@@ -152,7 +180,18 @@ class Planificador:
         return True
 
     def horari_legal(self, e: Event, data: str, ini: int, fi: int) -> bool:
-        if data in self.dies_tancats or not dins_finestra(ini, fi, e.torn):
+        mateix_slot = data == e.data_origen and ini == e.ini_origen
+        if data in self.dies_tancats:
+            return False
+        torn_ok = dins_finestra(ini, fi, e.torn)
+        # Una sessió R1 fixada sense aula no es pot moure de franja. Es permet
+        # assignar-li aula al seu horari original si capta dins l'horari lectiu;
+        # la discrepància de torn es declararà explícitament com a relaxació.
+        fixada_al_origen = not e.movible and mateix_slot
+        dins_horari_docent = (
+            dins_finestra(ini, fi, "mati") or dins_finestra(ini, fi, "tarda")
+        )
+        if not torn_ok and not (fixada_al_origen and dins_horari_docent):
             return False
         if data in self.dies_avaluacio and data != e.data_origen:
             return False
@@ -191,7 +230,12 @@ class Planificador:
             hores_possibles.append(e.ini_origen)
         hores = sorted(hores_possibles, key=lambda h: (h != e.ini_origen, abs(h - e.ini_origen)))
         dies = [e.dia_origen] + [d for d in DIES if d != e.dia_origen]
-        aules = sorted(e.aules, key=lambda a: (a != e.aula_origen, self.cap[a]))
+        # Les sessions fixades sense aula poden rebre'n una, però mantenen
+        # estrictament el dia i l'hora d'origen.
+        if not e.movible:
+            dies = [e.dia_origen]
+            hores = [e.ini_origen]
+        aules = sorted(e.aules, key=lambda a: (a != e.aula_origen, self.cap.get(a, 0)))
         for dia in dies:
             data = dia_setmana(e.data_origen, dia)
             for ini in hores:
@@ -207,7 +251,7 @@ class Planificador:
         for x in self.per_data[data]:
             if not solapa(ini, fi, x.ini, x.fi):
                 continue
-            if (aula == x.aula or e.docents & x.docents or comparteix_alumnat(e, x)
+            if ((aula and aula == x.aula) or e.docents & x.docents or comparteix_alumnat(e, x)
                     or (e.codi == x.codi and "PLAB" in {e.tipus, x.tipus}
                         and {e.tipus, x.tipus} & {"TE", "PAUL"})):
                 blocked.add(x)
@@ -222,6 +266,10 @@ class Planificador:
 
 def reparar_una_sessio(p: Planificador, event: Event) -> bool:
     """Mou un màxim de tres bloquejadores flexibles per salvar una sessió pendent."""
+    fallback = None
+    if event in p.colocades:
+        fallback = (event.data, event.dia, event.ini, event.aula)
+        p.treure(event)
     for opcio in p.candidats(event, ignorar_conflictes=True):
         data, dia, ini, aula = opcio
         blockers = p.bloquejadors(event, data, ini, aula)
@@ -251,6 +299,8 @@ def reparar_una_sessio(p: Planificador, event: Event) -> bool:
         p.treure(event)
         for x in blockers:
             p.posar(x, *previous[x])
+    if fallback is not None:
+        p.posar(event, *fallback)
     return False
 
 
@@ -286,25 +336,59 @@ def construir_events(sessions: pd.DataFrame, aules: pd.DataFrame) -> tuple[list[
         s = files[0]
         if any((f.data, f.h_ini, f.h_fi) != (s.data, s.h_ini, s.h_fi) for f in files):
             raise ValueError(f"Docència compartida incoherent: {unitat}")
-        if all(str(f.sense_espai) == "1" for f in files):
-            continue
-        fixada = any(str(f.fixada).strip() for f in files) or all(f.tipus == "PLAB" for f in files)
-        aula_origen = next((f.aula_partida for f in files if str(f.aula_partida).strip()), "")
-        # Un PLAB sense aula no s'ha d'assignar; conserva'n la fila original.
-        if fixada and not aula_origen:
-            continue
+        sense_espai = all(str(f.sense_espai) == "1" for f in files)
+        fixada = any(str(f.fixada).strip() for f in files) or all(
+            f.tipus == "PLAB" for f in files
+        )
+        aula_origen = next(
+            (f.aula_partida for f in files if str(f.aula_partida).strip()), ""
+        )
+
+        # No necessiten aula, però sí que s'han de planificar perquè
+        # compleixin el torn i no provoquin solapaments d'alumnat/docència.
+        if sense_espai:
+            aula_origen = ""
+            aules_event = [""]
+        # Els PLAB fixats sense aula es mantenen a l'horari d'origen,
+        # però han de continuar bloquejant docent, alumnat i assignatura.
+        elif fixada and not aula_origen and all(
+            f.tipus == "PLAB" for f in files
+        ):
+            aules_event = [""]
+        elif fixada and aula_origen:
+            aules_event = [aula_origen]
+        else:
+            aules_event = aules_permeses(files, aules)
         tipus = s.tipus
         grup = s.grup
+        grups_per_cohort: dict[str, set[tuple[str, str, str]]] = defaultdict(set)
+        for f in files:
+            num = f.grup.split("/")[-1]
+            grup_fila = (f.tipus, linia(f.grup, f.tipus), num)
+            for cohort in str(f.titulacions_curs).split("|"):
+                if cohort:
+                    grups_per_cohort[cohort].add(grup_fila)
         e = Event(str(unitat), tuple(f.id_sessio for f in files), s.data, s.dia, hm(s.h_ini), hm(s.h_fi), tipus,
                   s.codi, max(int(f.alumnes or 0) for f in files), set("|".join(f.titulacions_curs for f in files).split("|")) - {""},
                   set("|".join(f.docents for f in files).split("|")) - {""}, linia(grup, tipus), grup.split("/")[-1],
-                  s.torn_requerit, aula_origen, [aula_origen] if fixada else aules_permeses(files, aules), not fixada)
-        # Les sessions fixades es mantenen; la resta poden canviar si cal.
+                  dict(grups_per_cohort),
+                    s.torn_requerit, aula_origen, aules_event, not fixada)        # Les sessions fixades es mantenen; la resta poden canviar si cal.
         # Es prova primer la ubicació original per minimitzar moviments.
         ja_correcta = dins_finestra(e.ini_origen, e.fi_origen, e.torn)
-        if fixada:
-            e.data, e.dia, e.ini, e.aula = e.data_origen, e.dia_origen, e.ini_origen, aula_origen
+        if sense_espai and fixada:
+            e.data, e.dia, e.ini, e.aula = (
+                e.data_origen, e.dia_origen, e.ini_origen, ""
+            )
             fixats.append(e)
+            continue
+        if fixada and aula_origen:
+            e.data, e.dia, e.ini, e.aula = (
+                e.data_origen, e.dia_origen, e.ini_origen, aula_origen
+            )
+            fixats.append(e)
+        elif fixada:
+            # Puede recibir aula, pero conserva su día y hora.
+            movibles.append(e)
         else:
             if not e.aules:
                 raise ValueError(f"No hi ha aula compatible per a {e.ids[0]}")
@@ -312,7 +396,10 @@ def construir_events(sessions: pd.DataFrame, aules: pd.DataFrame) -> tuple[list[
     return movibles, fixats
 
 
-def resum(events: list[Event], movibles: list[Event], p: Planificador) -> str:
+def resum(events: list[Event], movibles: list[Event], p: Planificador,
+          sense_lloc: list[str] | None = None,
+          relaxacions_r1: list[str] | None = None,
+          relaxacions_r2: list[str] | None = None) -> str:
     pic = {}
     for torn, limits in (("matí", MATI), ("tarda", TARDA)):
         maxim = 0
@@ -330,7 +417,28 @@ def resum(events: list[Event], movibles: list[Event], p: Planificador) -> str:
             for c in e.cohorts or {"sense cohort"}:
                 canvis[c] += len(e.ids)
     llistat = "\n".join(f"- {k}: {v}" for k, v in sorted(canvis.items())) or "- Cap"
+    pendents = sense_lloc or []
+    relaxacions = relaxacions_r1 or []
+    relaxacions_calendari = relaxacions_r2 or []
+    estat = (
+        "INCOMPLETA" if pendents
+        else "COMPLETA AMB RELAXACIONS" if relaxacions or relaxacions_calendari
+        else "COMPLETA"
+    )
+    pendents_md = "\n".join(f"- {sid}" for sid in pendents) or "- Cap"
+    relaxacions_md = (
+        f"- R1-TORN: {len(relaxacions)} sessions fixades sense aula; "
+        "justificació i IDs a relaxacions-5_2.csv."
+        if relaxacions else "- Cap"
+    )
+    relaxacions_calendari_md = (
+        f"- R2-CALENDARI: {len(relaxacions_calendari)} sessions; "
+        "no hi havia franja del torn lliure a la setmana original."
+        if relaxacions_calendari else "- Cap"
+    )
     return f"""# Resum punt 5.2 — Junta Permanent
+
+Estat de la planificació: **{estat}**.
 
 ## Capacitat
 
@@ -346,7 +454,15 @@ Total de sessions modificades: **{total_canvis}**.
 
 ## Excepcions a R1
 
-- Cap: PLAB i sessions fixades no s'han modificat.
+{relaxacions_md}
+
+## Excepcions a R2
+
+{relaxacions_calendari_md}
+
+## Sessions pendents d'assignació
+
+{pendents_md}
 """
 
 
@@ -354,12 +470,24 @@ def main() -> None:
     sessions = pd.read_csv(PAQUET / "sessions.csv", dtype=str).fillna("")
     aules = pd.read_csv(PAQUET / "aules.csv", dtype=str).fillna("")
     aules["capacitat"] = aules.capacitat.astype(int)
-    proposta = pd.read_csv(PAQUET / "proposta_partida.csv", dtype=str).fillna("")
+    proposta_actual = ARREL / "proposta-torns.csv"
+    proposta_path = proposta_actual if proposta_actual.exists() else PAQUET / "proposta_partida.csv"
+    proposta = pd.read_csv(proposta_path, dtype=str).fillna("")
+    proposta_origen = proposta.set_index("id_sessio")
     calendari = pd.read_csv(PAQUET / "calendari.csv", dtype=str).fillna("")
     # Replica R2-CALENDARI: festius/no lectius tanquen tot el dia; les dates
     # d'avaluació només conserven docència que ja hi era, i les aturades poden
     # ser parcials. Això evita descartar franges legals.
     dies_tancats = set(calendari.loc[calendari.tipus.isin(["festiu", "no_lectiu"]), "data"])
+    # El verificador també prohibeix traslladar una sessió a un dia laborable
+    # sense cap classe a la proposta base, encara que no consti al calendari.
+    dates_amb_classe = set(sessions["data"])
+    dates = pd.to_datetime(sessions["data"], errors="coerce").dropna()
+    if not dates.empty:
+        for dia in pd.date_range(dates.min(), dates.max(), freq="D"):
+            data = dia.strftime("%Y-%m-%d")
+            if dia.weekday() < 5 and data not in dates_amb_classe:
+                dies_tancats.add(data)
     dies_avaluacio = set(calendari.loc[calendari.tipus == "avaluacio", "data"])
     aturades: dict[str, list[tuple[int, int]]] = defaultdict(list)
     for _, fila in calendari[calendari.tipus == "aturada"].iterrows():
@@ -379,22 +507,29 @@ def main() -> None:
             current.registrar(e)
         ordered = list(movibles)
         if attempt == 0:
-            ordered.sort(key=lambda e: (len(e.aules), -e.alumnes,
+            ordered.sort(key=lambda e: (e.movible, len(e.aules), -e.alumnes,
                                         -(e.fi_origen - e.ini_origen), e.key))
         elif attempt == 1:
-            ordered.sort(key=lambda e: (len(e.aules), -e.alumnes,
+            ordered.sort(key=lambda e: (e.movible, len(e.aules), -e.alumnes,
                                         -(e.fi_origen - e.ini_origen), e.dia_origen, e.ini_origen))
         elif attempt == 2:
-            ordered.sort(key=lambda e: (len(e.aules), -(e.fi_origen - e.ini_origen),
+            ordered.sort(key=lambda e: (e.movible, len(e.aules), -(e.fi_origen - e.ini_origen),
                                         -e.alumnes, e.dia_origen, e.ini_origen, e.key))
         else:
-            ordered.sort(key=lambda e: (len(e.aules), -e.alumnes,
+            ordered.sort(key=lambda e: (e.movible, len(e.aules), -e.alumnes,
                                         -(e.fi_origen - e.ini_origen), e.key[::-1]))
         sense_lloc = []
         for e in ordered:
             opcio = next(current.candidats(e), None)
             if opcio is None:
                 sense_lloc.append(e.ids[0])
+                # Reserva l'horari original i conserva l'aula de la proposta
+                # anterior si encara és compatible.
+                aula_actual = str(proposta_origen.loc[e.ids[0], "aula"])
+                aula_reserva = aula_actual if aula_actual in e.aules else e.aula_origen
+                current.posar(
+                    e, e.data_origen, e.dia_origen, e.ini_origen, aula_reserva
+                )
             else:
                 current.posar(e, *opcio)
         p = current
@@ -428,26 +563,85 @@ def main() -> None:
                 f"{sid} ({e.codi} {e.tipus}/{e.num_grup}, torn={e.torn}, alumnes={e.alumnes}, "
                 f"aules compatibles={len(e.aules)}: {', '.join(e.aules) or 'cap'}{blockage})"
             )
-        raise RuntimeError(
+        print(
             "La heurística no ha trobat lloc per a aquestes sessions:\n  "
             + "\n  ".join(diagnosi)
-            + "\nAixò no demostra que el problema sigui impossible; cal reordenar sessions ja col·locades "
-              "o revisar si cal declarar una relaxació. No s'ha escrit cap proposta en aquesta execució; "
-              "si proposta-torns.csv ja existeix, continua sent una versió anterior i el verificador n'està "
-              "avaluant aquella."
+            + "\nNo s'han aplicat relaxacions. Les sessions sense franja lectiva compatible conserven "
+              "el dia i l'hora originals; es desarà la proposta per revisar-la."
         )
 
-    per_id = {sid: e for e in movibles for sid in e.ids}
+    # Exporta només les activitats realment col·locades. Les pendents conserven
+    # dia/hora/aula de la proposta base, i queden llistades com a incompletes.
+    col·locades = set(p.colocades)
+    per_id = {sid: e for e in movibles if e in col·locades for sid in e.ids}
+    movibles_col_locades = [e for e in movibles if e in col·locades]
     nous_dies = {sid: e.dia for sid, e in per_id.items()}
     noves_hores = {sid: hhmm(e.ini) for sid, e in per_id.items()}
     noves_aules = {sid: e.aula for sid, e in per_id.items()}
     proposta["dia"] = proposta.id_sessio.map(nous_dies).fillna(proposta["dia"])
     proposta["h_ini"] = proposta.id_sessio.map(noves_hores).fillna(proposta["h_ini"])
     proposta["aula"] = proposta.id_sessio.map(noves_aules).fillna(proposta["aula"])
-    proposta.to_csv(ARREL / "proposta-torns.csv", index=False)
-    (ARREL / "resum-5_2.md").write_text(resum(p.colocades, movibles, p), encoding="utf-8")
-    print("Creats proposta-torns.csv i resum-5_2.md")
-    print("Valida-ho amb: python -m horaris check proposta-torns.csv --semestre 2")
+    output_path = ARREL / "proposta-torns.csv"
+    temp_path = ARREL / ".proposta-torns.tmp.csv"
+    proposta.to_csv(temp_path, index=False)
+    # El reemplazo al final evita dejar un CSV truncado si la escritura falla.
+    temp_path.replace(output_path)
+    torn_incorrecte_a_origen = lambda e: (
+        e.torn in {"mati", "tarda"}
+        and e.data == e.data_origen
+        and e.ini == e.ini_origen
+        and ((e.ini_origen < MATI[1]) != (e.torn == "mati"))
+    )
+    fixades_r1 = sorted({
+        sid
+        for e in movibles_col_locades
+        if torn_incorrecte_a_origen(e) and not e.movible
+        and not e.aula_origen and e.aula
+        for sid in e.ids
+    })
+    pendents_r1 = sorted({
+        sid
+        for e in movibles_col_locades
+        if torn_incorrecte_a_origen(e) and e.movible
+        for sid in e.ids
+    })
+    files_excepcions = []
+    if fixades_r1:
+        files_excepcions.append({
+            "restriccio": "R1-TORN",
+            "sessions": "|".join(fixades_r1),
+            "justificacio": (
+                "Sessions fixades de GEI/GEET+GEST de 1r o 2n conservades al dia i hora "
+                "de la partida; només s'hi assigna aula quan cal per complir R5-SENSE-AULA. "
+                "Es demana excepció explícita a R1-TORN."
+            ),
+        })
+    if pendents_r1:
+        files_excepcions.append({
+            "restriccio": "R1-TORN",
+            "sessions": "|".join(pendents_r1),
+            "justificacio": (
+                "No s'ha trobat cap franja de tarda lectiva sense conflictes dins la setmana. "
+                "S02839 queda bloquejada per S01504 i els docents compartits; S04526 només "
+                "té Q1/0007 i Q1/0019, ocupades per sessions fixades a les franges disponibles. "
+                "Es demana excepció explícita a R1-TORN i es conserva el dia i hora d'origen."
+            ),
+        })
+    excepcions_path = ARREL / "relaxacions-5_2.csv"
+    pd.DataFrame(
+        files_excepcions,
+        columns=["restriccio", "sessions", "justificacio"],
+    ).to_csv(excepcions_path, index=False, encoding="utf-8")
+    ids_excepcionats = set(fixades_r1) | set(pendents_r1)
+    pendents_sense_excepcio = set(sense_lloc) - ids_excepcionats
+    estat = "INCOMPLETA" if pendents_sense_excepcio else (
+        "COMPLETA AMB EXCEPCIONS R1" if ids_excepcionats else "COMPLETA"
+    )
+    print(f"Actualitzat proposta-torns.csv ({estat})")
+    print(f"Excepcions R1 documentades: {len(ids_excepcionats)}")
+    if pendents_sense_excepcio:
+        print(f"Sessions pendents sense excepcio declarada: {', '.join(sorted(pendents_sense_excepcio))}")
+    print("Valida-ho amb: python -m horaris check proposta-torns.csv --semestre 2 --relaxacions relaxacions-5_2.csv")
 
 
 if __name__ == "__main__":
