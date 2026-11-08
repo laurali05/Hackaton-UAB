@@ -82,10 +82,6 @@ El repositorio también contiene el análisis, el verificador del reto en `horar
 
 Ejecuta los comandos desde la raíz del repositorio. Se necesita Python 3.10 o superior. El verificador solo usa la biblioteca estándar; los scripts de solución necesitan `pandas`.
 
-## Ejecución
-
-Ejecuta los comandos desde la raíz del repositorio. Se necesita Python 3.10 o superior.
-
 ```powershell
 # Comprobar la propuesta de partida
 python -m horaris check paquet/proposta_partida.csv --semestre 2 --nomes-aules
@@ -115,13 +111,10 @@ python solucio_5_3.py --base proposta-torns.csv --check
 python solucions_5_4.py proposta-torns.csv `
   --out proposta-grau-nou.csv `
   --check
+```
 
-La comprobación principal es el **veredicto del verificador**, no una estimación de puntuación. El informe puede mostrar incumplimientos heredados del horario de partida; estos no cuentan como incumplimientos nuevos de la propuesta.
-
-## Datos y uso responsable
-
-Los datos del paquete están seudonimizados, pero no son anónimos. Se usan únicamente para este reto: no intentes identificar a ninguna persona ni publiques o compartas los datos fuera del contexto autorizado de la hackatón.
 
 ## Equipo
 
 **404:Brain Cells** · UAB THE HACK! 2026
+Miembros: **Laura Lope**, **Sofia Boyko**, **Mafruha Hossain**, **Anisa Karim** y **Sofia Mirza**
