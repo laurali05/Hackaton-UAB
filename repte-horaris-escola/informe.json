@@ -1,97 +1,59 @@
 {
-  "veredicte": "NO VALIDA",
+  "veredicte": "VALIDA AMB RELAXACIONS DECLARADES",
   "restriccions": {
-    "R1-FIXADA": {
-      "total": 8,
-      "compten": 8,
-      "declarades": 0,
-      "heretades": 0
-    },
     "R1-TORN": {
-      "total": 3246,
-      "compten": 2170,
-      "declarades": 0,
-      "heretades": 1076
-    },
-    "R2-FINESTRA": {
-      "total": 13,
-      "compten": 13,
-      "declarades": 0,
-      "heretades": 0
+      "total": 1240,
+      "compten": 0,
+      "declarades": 460,
+      "heretades": 780
     },
     "R3-AFORAMENT": {
-      "total": 101,
-      "compten": 44,
+      "total": 58,
+      "compten": 0,
       "declarades": 0,
-      "heretades": 57
-    },
-    "R3-TANCADA": {
-      "total": 2,
-      "compten": 2,
-      "declarades": 0,
-      "heretades": 0
-    },
-    "R3-TIPUS": {
-      "total": 54,
-      "compten": 54,
-      "declarades": 0,
-      "heretades": 0
+      "heretades": 58
     },
     "R4-ALUMNAT": {
-      "total": 322,
+      "total": 190,
       "compten": 0,
       "declarades": 0,
-      "heretades": 322
-    },
-    "R4-AULA": {
-      "total": 87,
-      "compten": 87,
-      "declarades": 0,
-      "heretades": 0
+      "heretades": 190
     },
     "R4-DOCENT": {
-      "total": 752,
+      "total": 404,
       "compten": 0,
       "declarades": 0,
-      "heretades": 752
+      "heretades": 404
     },
     "R4-PLAB": {
-      "total": 195,
+      "total": 143,
       "compten": 0,
       "declarades": 0,
-      "heretades": 195
-    },
-    "R5-SENSE-AULA": {
-      "total": 3405,
-      "compten": 3405,
-      "declarades": 0,
-      "heretades": 0
+      "heretades": 143
     }
   },
   "no_avaluables": {
     "ESPAI-DOBLE": 415
   },
   "objectius": {
-    "hores_mortes_min": 72690,
-    "desplacaments_aula": 845,
-    "desplacaments_edifici": 7,
-    "canvis_franja": 1,
-    "canvis_aula": 40,
-    "r6_aules_te_extra_per_grup": 349,
-    "r6_canvis_te_paul_fora_passadis": 291,
-    "sessions_avaluades": 7739,
-    "canvis_franja_vs_referencia": 1,
-    "canvis_aula_vs_referencia": 44
+    "hores_mortes_min": 89340,
+    "desplacaments_aula": 3427,
+    "desplacaments_edifici": 0,
+    "canvis_franja": 2041,
+    "canvis_aula": 347,
+    "r6_aules_te_extra_per_grup": 114,
+    "r6_canvis_te_paul_fora_passadis": 1099,
+    "sessions_avaluades": 7739
   },
-  "relaxacions_declarades": 0,
-  "incompliments_declarats": 0,
+  "relaxacions_declarades": 2,
+  "incompliments_declarats": 460,
   "context": {
     "semestre": 2,
-    "escenari": "paquet/escenaris/contingencies",
+    "escenari": null,
     "nomes_aules": false,
     "paquet_sha256": "22abb3e74b61c472e248fd1bb271b960f7e0dad8e5eb09225cde5af7cf5f348a",
-    "proposta_sha256": "5d8b3de84e13ef358c6a5d10cd39db6ef66dc97fd544248c8ca39c7986d1a0ca",
-    "referencia_sha256": "5b67badf7fd811bb0b1de509f092abc3d7c10cdcaafc8ff2925a3709b666a1bb",
-    "relaxacions_sha256": null
+    "proposta_sha256": "228a6a1b4390a954badfd7f337c655ee8cca90fb1f81b2528c45a679eef0f7e2",
+    "referencia_sha256": null,
+    "relaxacions_sha256": "16fd97ab8537652616a8e934967d8c4fc2e060941ec1bd36debc1acd5358f2e9"
   }
 }
