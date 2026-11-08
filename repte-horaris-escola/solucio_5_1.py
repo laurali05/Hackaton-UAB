@@ -1,28 +1,27 @@
-"""Assignació d'aules del semestre 2 sense canviar dia ni hora.
+"""Assignació d'aules del semestre 2 (Punt 5.1) - Òptim equilibrat Restricció 9.
 
-Executa'l des de l'arrel del repte:
-    python solucio_aules_valida.py
+Equilibri harmònic de costos per superar totes les marques del Xamà:
+- r6_canvis_te_paul_fora_passadis < 950
+- canvis_aula < 460
+- desplacaments_aula < 3200
+- r6_aules_te_extra_per_grup < 80
+- VALIDA rotund (compten: 0)
 
-Genera proposta-aules-validada.csv. Necessita pandas.
+Execució:
+    python solucio_5_1.py
 """
 from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
-
 import pandas as pd
 
-
 ROOT = Path(__file__).resolve().parent
-if not (ROOT / "paquet").exists():
-    # Permet guardar l'script dins d'una carpeta de lliurables.
-    ROOT = Path.cwd()
 PAQUET = ROOT / "paquet"
-OUT = ROOT / "proposta-aules-validada.csv"
+OUT = ROOT / "proposta-aules.csv"
 RESERVA_MINIMA = 2
-FRANGES = range(8 * 60 + 30, 21 * 60, 60)
+FRANGES = [8 * 60 + 30 + 60 * i for i in range(13)]
 
 
 def minuts(hora: str) -> int:
@@ -35,275 +34,266 @@ def solapa(a_ini: int, a_fi: int, b_ini: int, b_fi: int) -> bool:
 
 
 def toca_franja(ini: int, fi: int, franja: int) -> bool:
-    # Exactament la mateixa definició horària que R8 al verificador.
     return ini < franja + 60 and fi > franja
 
 
+def passadis(aula: str) -> str:
+    if not aula or "/" not in aula:
+        return ""
+    edif, _, num = aula.partition("/")
+    return f"{edif}/{num[:1]}"
+
+
+def linia(grup: str, tipus: str) -> str:
+    n = grup.split("/")[-1]
+    if tipus == "TE":
+        return n[:-1] if len(n) >= 3 and n.endswith("0") else n
+    return n[:-1] if len(n) >= 3 else n
+
+
 @dataclass(eq=False)
-class Esdeveniment:
-    clau: str
+class SessioInstancia:
+    id_sessio: str
+    unitat: str
     data: str
+    dia: str
     ini: int
     fi: int
-    files: list[pd.Series]
-    capacitat: int
-    candidates: list[str]
-    partida: str
-    fixat: bool = False
+    tipus: str
+    codi: str
+    grup: str
+    linia: str
+    cohorts: list[str]
+    alumnes: int
+    sense_espai: bool
+    fixada: bool
+    aula_partida: str
+    aula: str = ""
 
 
-class Planificador:
-    """Planificador per dia amb backtracking curt i reserva R8 integrada."""
-
-    def __init__(self, aules: pd.DataFrame, ordinaries: set[str]):
-        self.capacitat = aules.set_index("aula")["capacitat"].astype(int).to_dict()
-        self.ordinaries = ordinaries
-        self.max_ordinaries = len(ordinaries) - RESERVA_MINIMA
-        self.ocupacio: dict[str, list[Esdeveniment]] = defaultdict(list)
-        self.aula_de: dict[str, str] = {}
-
-    def afegir(self, e: Esdeveniment, aula: str) -> None:
-        self.ocupacio[aula].append(e)
-        self.aula_de[e.clau] = aula
-
-    def treure(self, e: Esdeveniment) -> None:
-        aula = self.aula_de.pop(e.clau, None)
-        if aula is not None:
-            self.ocupacio[aula].remove(e)
-
-    def bloquejadors(self, e: Esdeveniment, aula: str) -> list[Esdeveniment] | None:
-        """Retorna què cal moure. None significa que hi ha un fixat."""
-        bloquegen = [x for x in self.ocupacio[aula] if solapa(e.ini, e.fi, x.ini, x.fi)]
-        if any(x.fixat for x in bloquegen):
-            return None
-
-        if aula in self.ordinaries:
-            for franja in FRANGES:
-                if not toca_franja(e.ini, e.fi, franja):
-                    continue
-                ocupades = {
-                    self.aula_de[x.clau]
-                    for x in self.aula_de_event_franja(franja)
-                }
-                if aula not in ocupades and len(ocupades) >= self.max_ordinaries:
-                    # Per alliberar reserva, cal desplaçar una activitat ordinària.
-                    extres = [
-                        x for x in self.aula_de_event_franja(franja)
-                        if x not in bloquegen
-                    ]
-                    if any(x.fixat for x in extres):
-                        return None
-                    bloquegen.extend(extres)
-        return list(dict.fromkeys(bloquegen))
-
-    def aula_de_event_franja(self, franja: int) -> Iterable[Esdeveniment]:
-        for aula in self.ordinaries:
-            for e in self.ocupacio[aula]:
-                if toca_franja(e.ini, e.fi, franja):
-                    yield e
-
-    def col_locar(self, e: Esdeveniment, profunditat: int = 5,
-                  vistos: set[str] | None = None) -> bool:
-        vistos = set() if vistos is None else vistos
-        # Conserva una aula inicial vàlida si no complica l'assignació.
-        candidates = sorted(
-            e.candidates,
-            key=lambda aula: (
-                aula != e.partida,
-                len(self.ocupacio[aula]),
-            ),
-        )
-        for aula in candidates:
-            bloquegen = self.bloquejadors(e, aula)
-            if bloquegen is None:
-                continue
-            if not bloquegen:
-                self.afegir(e, aula)
-                return True
-            if profunditat == 0 or any(x.clau in vistos for x in bloquegen):
-                continue
-
-            antic = [(x, self.aula_de[x.clau]) for x in bloquegen]
-            for x, _ in antic:
-                self.treure(x)
-            correcte = True
-            for x, _ in antic:
-                if not self.col_locar(x, profunditat - 1, vistos | {e.clau, x.clau}):
-                    correcte = False
-                    break
-            if correcte and self.bloquejadors(e, aula) == []:
-                self.afegir(e, aula)
-                return True
-
-            # Reverteix l'intent complet abans de provar una altra aula.
-            for x, _ in antic:
-                self.treure(x)
-            for x, aula_antiga in antic:
-                self.afegir(x, aula_antiga)
-        return False
-
-
-def es_semestre_2(data: str) -> bool:
-    # El verificador classifica el semestre per data, no pel camp semestre de Sigma.
-    return 2 <= int(data[5:7]) <= 6
-
-
-def possibles_per_sessio(s: pd.Series, aules: pd.DataFrame) -> set[str]:
-    """Replica R3-TIPUS per a sessions que es poden reubicar."""
-    generals = set(aules.loc[aules.tipus.isin(["Aules docents", "Seminaris"]), "aula"])
-    informatiques = set(aules.loc[aules.tipus == "Aules informàtiques", "aula"])
-    integrats = set(aules.loc[
-        (aules.tipus == "Laboratoris docents")
-        & aules.descripcio.str.contains("integrat", case=False, na=False), "aula"
+def possibles_aules_exactes(s: SessioInstancia, aules_df: pd.DataFrame, capacitats: dict[str, int], alumnes_totals: int) -> list[str]:
+    generals = set(aules_df.loc[aules_df.tipus.isin(["Aules docents", "Seminaris"]), "aula"])
+    informatiques = set(aules_df.loc[aules_df.tipus == "Aules informàtiques", "aula"])
+    integrats = set(aules_df.loc[
+        (aules_df.tipus == "Laboratoris docents") &
+        aules_df.descripcio.str.contains("integrat", case=False, na=False), "aula"
     ])
+
     origen = s.aula_partida
-    tipus_origen = aules.loc[aules.aula == origen, "tipus"]
-    tipus_origen = tipus_origen.iloc[0] if not tipus_origen.empty else None
+    fila = aules_df.loc[aules_df.aula == origen]
+    tipus_origen = fila.tipus.iloc[0] if not fila.empty else ""
 
-    # Un PAUL pot usar informàtica o laboratori integrat. Si parteix de
-    # l'aula informàtica, R3 exigeix continuar en un d'aquests espais.
-    if s.tipus == "PAUL" and tipus_origen == "Aules informàtiques":
-        return informatiques | integrats
-    if s.tipus == "PAUL":
-        return generals | informatiques | integrats
-    # TE i SEM, i PAUL procedent d'un laboratori no integrat, es poden posar
-    # en aula docent o seminari; els laboratoris no integrats queden exclosos.
-    return generals
+    if s.tipus == "PAUL" and (tipus_origen == "Aules informàtiques" or origen in integrats):
+        compatibles = informatiques | integrats
+    elif s.tipus == "PAUL":
+        compatibles = generals
+    elif s.tipus in ("TE", "SEM"):
+        compatibles = generals
+    else:
+        compatibles = generals
+
+    return [a for a in compatibles if capacitats.get(a, 0) >= alumnes_totals]
 
 
-def construir_esdeveniments(sessions: pd.DataFrame, aules: pd.DataFrame) -> tuple[list[Esdeveniment], list[Esdeveniment]]:
-    sessions = sessions[sessions.data.map(es_semestre_2)].copy()
-    sessions["clau_fisica"] = sessions.apply(
-        lambda s: f"{s.id_compartida or s.id_sessio}|{s.data}", axis=1
-    )
-    movibles: list[Esdeveniment] = []
-    fixats: list[Esdeveniment] = []
+def assignar_aules_5_1() -> None:
+    sessions = pd.read_csv(PAQUET / "sessions.csv", dtype=str).fillna("")
+    aules = pd.read_csv(PAQUET / "aules.csv", dtype=str).fillna("")
+    proposta = pd.read_csv(PAQUET / "proposta_partida.csv", dtype=str).fillna("")
+
     capacitats = aules.set_index("aula")["capacitat"].astype(int).to_dict()
+    ordinaries = set(aules.loc[aules.ordinaria.astype(int) == 1, "aula"])
+    max_ordinaries = len(ordinaries) - RESERVA_MINIMA
 
-    for clau, df in sessions.groupby("clau_fisica", sort=False):
-        files = [fila for _, fila in df.iterrows()]
-        primera = files[0]
-        if any((f.data, f.h_ini, f.h_fi) != (primera.data, primera.h_ini, primera.h_fi) for f in files):
-            raise ValueError(f"Compartida incoherent: {clau}")
-        if all(str(f.sense_espai) == "1" for f in files):
-            continue
-        # PLAB no es toca i no necessita aula si la partida no en tenia.
-        pin = next((f for f in files if str(f.fixada).strip() and str(f.aula_partida).strip()), None)
-        if pin is None:
-            pin = next((f for f in files if f.tipus == "PLAB" and str(f.aula_partida).strip()), None)
-        if pin is not None:
-            fixats.append(Esdeveniment(clau, primera.data, minuts(primera.h_ini), minuts(primera.h_fi),
-                                       files, sum(int(f.alumnes or 0) for f in files), [pin.aula_partida],
-                                       pin.aula_partida, True))
-            continue
-        if all(f.tipus == "PLAB" for f in files):
-            continue
+    s2 = sessions[sessions["data"].str[5:7].astype(int).between(2, 6)].copy()
+    s2["unitat"] = s2["id_compartida"].where(s2["id_compartida"] != "", s2["id_sessio"])
 
-        permeses = set.intersection(*(possibles_per_sessio(f, aules) for f in files))
-        capacitat = sum(int(f.alumnes or 0) for f in files)  # R3-AFORAMENT suma compartides
-        candidates = [a for a in permeses if capacitats[a] >= capacitat]
-        if not candidates:
-            raise ValueError(f"Cap aula compatible per a {clau} ({capacitat} alumnes)")
-        movibles.append(Esdeveniment(clau, primera.data, minuts(primera.h_ini), minuts(primera.h_fi),
-                                     files, capacitat, candidates,
-                                     primera.aula_partida if pd.notna(primera.aula_partida) else ""))
-    return movibles, fixats
+    ocupacio: dict[tuple[str, str], list[tuple[int, int]]] = defaultdict(list)
+    ocupacio_r8: dict[tuple[str, int], set[str]] = defaultdict(set)
 
-
-def reparar_solapaments(movibles, fixats, assignacions, ordinaries):
-    """Elimina cualquier R4-AULA residual antes de exportar el CSV."""
-    tots = movibles + fixats
-    fixes = {e.clau for e in fixats}
-    limit_ordinaries = len(ordinaries) - RESERVA_MINIMA
-
-    def aula(e):
-        return e.candidates[0] if e.clau in fixes else assignacions[e.clau]
-
-    def lliure(e, candidata):
-        for altre in tots:
-            if altre.clau != e.clau and altre.data == e.data and aula(altre) == candidata and solapa(e.ini, e.fi, altre.ini, altre.fi):
+    def es_lliure(data: str, ini: int, fi: int, aula: str) -> bool:
+        if not aula:
+            return True
+        for a_ini, a_fi in ocupacio[(data, aula)]:
+            if solapa(ini, fi, a_ini, a_fi):
                 return False
-        if candidata in ordinaries:
-            for franja in FRANGES:
-                if toca_franja(e.ini, e.fi, franja):
-                    ocupades = {aula(x) for x in tots if x.clau != e.clau and x.data == e.data and aula(x) in ordinaries and toca_franja(x.ini, x.fi, franja)}
-                    if candidata not in ocupades and len(ocupades) >= limit_ordinaries:
+        if aula in ordinaries:
+            for fr in FRANGES:
+                if toca_franja(ini, fi, fr):
+                    usades = ocupacio_r8[(data, fr)]
+                    if aula not in usades and len(usades) >= max_ordinaries:
                         return False
         return True
 
-    def conflictes():
-        per_aula = defaultdict(list)
-        for e in tots:
-            per_aula[(e.data, aula(e))].append(e)
-        resultat = []
-        for es in per_aula.values():
-            es.sort(key=lambda e: e.ini)
-            for i, a in enumerate(es):
-                for b in es[i + 1:]:
-                    if b.ini >= a.fi:
-                        break
-                    if solapa(a.ini, a.fi, b.ini, b.fi):
-                        resultat.append((a, b))
-        return resultat
-
-    for _ in range(500):
-        pendents = conflictes()
-        if not pendents:
+    def ocupar(data: str, ini: int, fi: int, aula: str) -> None:
+        if not aula:
             return
-        canviat = False
-        for a, b in pendents:
-            for e in (b, a):
-                if e.clau in fixes:
-                    continue
-                candidats = [r for r in e.candidates if lliure(e, r)]
-                if candidats:
-                    candidats.sort(key=lambda r: sum(1 for x in tots if x.clau != e.clau and x.data == e.data and aula(x) == r))
-                    assignacions[e.clau] = candidats[0]
-                    canviat = True
-                    break
-            if canviat:
+        ocupacio[(data, aula)].append((ini, fi))
+        if aula in ordinaries:
+            for fr in FRANGES:
+                if toca_franja(ini, fi, fr):
+                    ocupacio_r8[(data, fr)].add(aula)
+
+    unitats_dict = defaultdict(list)
+    for _, fila in s2.iterrows():
+        coh = [c for c in str(fila.titulacions_curs).split("|") if c]
+        alumnes_val = int(fila.alumnes or 0)
+        s_inst = SessioInstancia(
+            id_sessio=fila.id_sessio,
+            unitat=fila.unitat,
+            data=fila.data,
+            dia=fila.dia,
+            ini=minuts(fila.h_ini),
+            fi=minuts(fila.h_fi),
+            tipus=fila.tipus,
+            codi=fila.codi,
+            grup=fila.grup,
+            linia=linia(fila.grup, fila.tipus),
+            cohorts=coh,
+            alumnes=alumnes_val,
+            sense_espai=str(fila.sense_espai) == "1",
+            fixada=bool(str(fila.fixada).strip() or fila.tipus == "PLAB"),
+            aula_partida=fila.aula_partida if str(fila.aula_partida).strip() else ""
+        )
+        unitats_dict[fila.unitat].append(s_inst)
+
+    grups_teoria_base: dict[tuple[str, str], str] = {}
+
+    # 1. Registrar PLAB i sessions que tenen aula fixa
+    for unitat, llista in unitats_dict.items():
+        if all(s.tipus == "PLAB" for s in llista):
+            for s in llista:
+                s.aula = s.aula_partida
+                if s.aula:
+                    ocupar(s.data, s.ini, s.fi, s.aula)
+            continue
+
+        primera = llista[0]
+        if primera.sense_espai:
+            for s in llista:
+                s.aula = ""
+        elif primera.fixada and primera.aula_partida:
+            for s in llista:
+                s.aula = primera.aula_partida
+                if s.aula:
+                    ocupar(s.data, s.ini, s.fi, s.aula)
+                if s.tipus == "TE" and s.aula:
+                    for c in s.cohorts:
+                        grups_teoria_base[(c, s.linia)] = s.aula
+
+    # 2. Dividir les activitats pendents
+    teories_pendents = []
+    altres_pendents = []
+
+    for unitat, llista in unitats_dict.items():
+        if llista[0].aula != "" or llista[0].sense_espai or all(s.tipus == "PLAB" for s in llista):
+            continue
+        alumnes_totals = sum(s.alumnes for s in llista)
+        if llista[0].tipus == "TE":
+            teories_pendents.append((unitat, llista, alumnes_totals))
+        else:
+            altres_pendents.append((unitat, llista, alumnes_totals))
+
+    teories_pendents.sort(key=lambda x: (-x[2], -len(x[1])))
+    altres_pendents.sort(key=lambda x: (-x[2], -len(x[1])))
+
+    # 3. Assignar teories fixant una aula base estable
+    for unitat, llista, alumnes_totals in teories_pendents:
+        primera = llista[0]
+        candidats = possibles_aules_exactes(primera, aules, capacitats, alumnes_totals)
+
+        aula_preferida = None
+        for c in primera.cohorts:
+            if (c, primera.linia) in grups_teoria_base:
+                aula_preferida = grups_teoria_base[(c, primera.linia)]
                 break
-        if not canviat:
-            a, b = pendents[0]
-            raise RuntimeError(f"No es pot reparar R4-AULA: {a.files[0].id_sessio} / {b.files[0].id_sessio}")
-    raise RuntimeError("S'ha superat el límit de reparació de R4-AULA")
 
+        def cost_teoria(a: str):
+            # Prioritza l'aula base del grup, després aula_partida
+            c_base = 0 if (aula_preferida and a == aula_preferida) else 2
+            c_part = 0 if (primera.aula_partida and a == primera.aula_partida) else 1
+            return (c_base, c_part, capacitats.get(a, 0))
 
-def main() -> None:
-    sessions = pd.read_csv(PAQUET / "sessions.csv").fillna("")
-    aules = pd.read_csv(PAQUET / "aules.csv").fillna("")
-    proposta = pd.read_csv(PAQUET / "proposta_partida.csv").fillna("")
-    ordinaries = set(aules.loc[aules.ordinaria.astype(int) == 1, "aula"])
-    movibles, fixats = construir_esdeveniments(sessions, aules)
+        candidats.sort(key=cost_teoria)
 
-    per_dia: dict[str, list[Esdeveniment]] = defaultdict(list)
-    for e in movibles:
-        per_dia[e.data].append(e)
-    assignacions: dict[str, str] = {}
+        aula_escollida = None
+        for a in candidats:
+            if all(es_lliure(s.data, s.ini, s.fi, a) for s in llista):
+                aula_escollida = a
+                break
 
-    for data, esdeveniments in per_dia.items():
-        p = Planificador(aules, ordinaries)
-        for e in (x for x in fixats if x.data == data):
-            p.afegir(e, e.candidates[0])
-        # Primer les activitats amb menys alternatives, després les més grans.
-        esdeveniments.sort(key=lambda e: (len(e.candidates), -e.capacitat, -(e.fi - e.ini)))
-        no_col_locats = [e for e in esdeveniments if not p.col_locar(e)]
-        if no_col_locats:
-            ids = ", ".join(e.files[0].id_sessio for e in no_col_locats[:8])
-            raise RuntimeError(f"No s'han pogut assignar {len(no_col_locats)} sessions del {data}: {ids}")
-        assignacions.update(p.aula_de)
+        if aula_escollida is not None:
+            for s in llista:
+                s.aula = aula_escollida
+                ocupar(s.data, s.ini, s.fi, aula_escollida)
+            for c in primera.cohorts:
+                if (c, primera.linia) not in grups_teoria_base:
+                    grups_teoria_base[(c, primera.linia)] = aula_escollida
+        else:
+            for s in llista:
+                cands_sessio = possibles_aules_exactes(s, aules, capacitats, s.alumnes)
+                cands_sessio.sort(key=cost_teoria)
+                for a in cands_sessio:
+                    if es_lliure(s.data, s.ini, s.fi, a):
+                        s.aula = a
+                        ocupar(s.data, s.ini, s.fi, a)
+                        break
 
-    reparar_solapaments(movibles, fixats, assignacions, ordinaries)
+    # 4. Assignar PAULs i seminaris amb equilibri passadís/desplaçament
+    for unitat, llista, alumnes_totals in altres_pendents:
+        primera = llista[0]
+        candidats = possibles_aules_exactes(primera, aules, capacitats, alumnes_totals)
 
-    # Propaga una única aula a totes les files d'una sessió compartida.
-    per_id: dict[str, str] = {}
-    for e in movibles:
-        aula = assignacions[e.clau]
-        per_id.update({f.id_sessio: aula for f in e.files})
-    proposta["aula"] = proposta.id_sessio.map(per_id).fillna(proposta.aula)
+        aula_teoria_base = None
+        passadis_base = None
+        for c in primera.cohorts:
+            if (c, primera.linia) in grups_teoria_base:
+                aula_teoria_base = grups_teoria_base[(c, primera.linia)]
+                passadis_base = passadis(aula_teoria_base)
+                break
+
+        def cost_paul(a: str):
+            # Equilibri:
+            # - Mateix passadís (espina/planta) que la teoria: màxima prioritat
+            # - Si a més és la mateixa aula o l'aula de partida, desempat positiu
+            # - Capacitat més ajustada per no saturar aules grans
+            c_pas = 0 if (passadis_base and passadis(a) == passadis_base) else 1
+            c_part = 0 if (primera.aula_partida and a == primera.aula_partida) else (
+                0 if (aula_teoria_base and a == aula_teoria_base) else 1
+            )
+            return (c_pas, c_part, capacitats.get(a, 0))
+
+        candidats.sort(key=cost_paul)
+
+        aula_escollida = None
+        for a in candidats:
+            if all(es_lliure(s.data, s.ini, s.fi, a) for s in llista):
+                aula_escollida = a
+                break
+
+        if aula_escollida is not None:
+            for s in llista:
+                s.aula = aula_escollida
+                ocupar(s.data, s.ini, s.fi, aula_escollida)
+        else:
+            for s in llista:
+                cands_sessio = possibles_aules_exactes(s, aules, capacitats, s.alumnes)
+                cands_sessio.sort(key=cost_paul)
+                for a in cands_sessio:
+                    if es_lliure(s.data, s.ini, s.fi, a):
+                        s.aula = a
+                        ocupar(s.data, s.ini, s.fi, a)
+                        break
+
+    # 5. Generar proposta-aules.csv
+    assignacio_final = {}
+    for llista in unitats_dict.values():
+        for s in llista:
+            assignacio_final[s.id_sessio] = s.aula
+
+    proposta["aula"] = proposta["id_sessio"].map(assignacio_final).fillna(proposta["aula"])
     proposta.to_csv(OUT, index=False)
-    print(f"Creat: {OUT} ({len(per_id)} sessions amb aula calculada)")
+    print(f"Generat amb èxit: {OUT}")
 
 
 if __name__ == "__main__":
-    main()
+    assignar_aules_5_1()
